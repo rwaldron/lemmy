@@ -1,6 +1,6 @@
 {
 	"name": "lemmy",
-	"description": "49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha webapp Boilerplate.",
+	"description": "49% Motherfucker | 51% Son of a Bitch Coffee-Script Express+Mocha Boilerplate.",
 	"version": "0.0.1",
 	"author": "Javier Cicchelli <javier@rock-n-code.com>",
 	"homepage": "http://rock-n-code.com",
@@ -10,15 +10,23 @@
 		"express",
 		"mocha",
 		"web",
-		"app",
 		"boilerplate"
 	],
 	"main": "./app.js",
 	"engines": { 
 		"node": ">= 0.4.0 < 0.7.0"
 	},
-	"directories:": {
-    "src": "./src",
+	"scripts": {
+    	"clean": "make clean",
+    	"dependencies": "make dependencies",
+    	"dependencies-deploy": "make dependencies-deploy",
+    	"build": "make build",
+    	"watch": "make watch",
+    	"test": "make test",
+    	"deploy": "make deploy"
+	},
+	"directories": {
+		"src": "./src",
 		"lib": "./lib",
 		"modules": "./modules",
 		"node_modules": "./node_modules",
