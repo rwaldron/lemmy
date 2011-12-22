@@ -1,6 +1,6 @@
 {
 	"name": "lemmy",
-	"description": "Lemmy's favorite Javascript/Coffee-Script Express+Mocha webapp Boilerplate.",
+	"description": "49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha webapp Boilerplate.",
 	"version": "0.0.1",
 	"author": "Javier Cicchelli <javier@rock-n-code.com>",
 	"homepage": "http://rock-n-code.com",
@@ -34,10 +34,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/rockncode/lemmy"
+		"url": "https://github.com/rock-n-code/lemmy"
 	},
 	"bugs": {
-		"url": "https://github.com/rockncode/lemmy/issues"
+		"url": "https://github.com/rock-n-code/lemmy/issues"
 	},
 	"contributors": [
 		{
