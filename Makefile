@@ -45,8 +45,13 @@ create:
 	make git-init
 endif
 
-dependencies-deploy:
+ifeq "$(APP_ENVIRONMENT)" "production"
+dependencies:
 	npm install --production
+else
+dependencies:
+	npm install
+endif
 
 build:
 	$(DEPENDENCIES_DIRECTORY)/jitter/$(DEPENDENCIES_DIRECTORY)/.bin/coffee --compile --output . $(SOURCE_DIRECTORY)
