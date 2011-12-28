@@ -20,8 +20,11 @@ clean:
 	rm -drf $(DEPLOYMENT_DIRECTORY)
 endif
 
-dependencies:
-	npm install
+git-init:
+	git init
+	git add .
+	git commit -m "Initial commit."
+
 
 dependencies-deploy:
 	npm install --production
