@@ -3,6 +3,7 @@ APP_FILE = app.js
 
 include .lemmy/directories
 include .lemmy/executables
+include .lemmy/templates
 include .lemmy/test
 
 clean:

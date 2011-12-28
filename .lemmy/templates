@@ -1,0 +1,48 @@
+GITIGNORE_JS = ".DS_Store\
+\nMakefile\
+\n*.log\
+\n.lemmy/\
+\nnode_modules/\
+\ndeploy/"
+
+GITIGNORE_CS = ".DS_Store\
+\nMakefile\
+\n*.log\
+\n.lemmy/\
+\nlib/\
+\nmodules/\
+\nnode_modules/\
+\ntest/\
+\ndeploy/"
+
+MODULAR_JS = "var express = require('express');\
+\n\nvar app = express.createServer();\
+\n\napp.configure(function(){\
+\n\tapp.use(express.logger());\
+\n\tapp.use(express.methodOverride());\
+\n\tapp.use(express.bodyParser());\
+\n\tapp.use(express.router());\
+\n});\
+\n\napp.configure(function(){\
+\n\tapp.use(express.errorHandler({\
+\n\t\tdumpExceptions: true,\
+\n\t\tshowStack: true\
+\n\t}));\
+\n});\
+\n\napp.listen(3000);"
+
+MODULAR_CS = "express = require 'express'\
+\n\napp = express.createServer()\
+\n\napp.configure ->\
+\n\tapp.use express.logger()\
+\n\tapp.use express.methodOverride()\
+\n\tapp.use express.bodyParser()\
+\n\tapp.use express.router()\
+\n\treturn\
+\n\napp.configure 'development', ->\
+\n\tapp.use express.errorHandler(\
+\n\t\tdumpExceptions: true,\
+\n\t\tshowStack: true\
+\n\t)\
+\n\treturn\
+\n\napp.listen 3000"
