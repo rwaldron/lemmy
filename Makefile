@@ -2,6 +2,7 @@ APP_ENVIRONMENT = development
 APP_FILE = app.js
 
 include .lemmy/directories
+include .lemmy/executables
 include .lemmy/test
 
 clean:
