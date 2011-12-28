@@ -1,6 +1,4 @@
-APP_ENVIRONMENT = development
-APP_FILE = app.js
-
+include .lemmy/setup
 include .lemmy/directories
 include .lemmy/executables
 include .lemmy/templates
