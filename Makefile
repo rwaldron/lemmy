@@ -4,6 +4,7 @@ include .lemmy/executables
 include .lemmy/templates
 include .lemmy/test
 
+ifeq "$(APP_LANGUAGE)" "coffeescript"
 clean:
 	rm -f ./*.log
 	rm -f ./$(APP_FILE)
@@ -12,6 +13,12 @@ clean:
 	rm -drf $(DEPENDENCIES_DIRECTORY)
 	rm -drf $(TESTING_DIRECTORY)
 	rm -drf $(DEPLOYMENT_DIRECTORY)
+else
+clean:
+	rm -f *.log
+	rm -drf $(DEPENDENCIES_DIRECTORY)
+	rm -drf $(DEPLOYMENT_DIRECTORY)
+endif
 
 dependencies:
 	npm install
