@@ -62,6 +62,8 @@ build:
 watch:
 	$(JITTER) $(SOURCE_DIRECTORY) . $(TEST_DIRECTORY)
 
+run:
+	node app.js
 
 test:
 	@NODE_ENV=test $(EXECUTABLE_DIRECTORY)/mocha \
