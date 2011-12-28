@@ -66,7 +66,7 @@ run:
 	node app.js
 
 test:
-	@NODE_ENV=test $(EXECUTABLE_DIRECTORY)/mocha \
+	@NODE_ENV=test $(MOCHA) \
 		--require $(TEST_DEPENDENCY) \
 		--reporter $(TEST_REPORTER) \
 		--ui $(TEST_INTERFACE) \
