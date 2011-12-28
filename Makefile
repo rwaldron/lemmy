@@ -96,4 +96,4 @@ deploy:
 	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 endif
 
-.PHONY: clean dependencies dependencies-deploy build watch test deploy
+.PHONY: clean create dependencies build watch run test deploy
