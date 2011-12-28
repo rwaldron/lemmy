@@ -1,13 +1,8 @@
 APP_ENVIRONMENT = development
 APP_FILE = app.js
 
-TEST_EXECUTABLE = ./$(DEPENDENCIES_DIRECTORY)/.bin/mocha
-TEST_DEPENDENCY = should
-TEST_REPORTER = spec
-TEST_INTERFACE = bdd
-TEST_THRESHOLD = 20
-TEST_FILES = $(TESTING_DIRECTORY)/**/*.js
 include .lemmy/directories
+include .lemmy/test
 
 clean:
 	rm -f ./*.log
