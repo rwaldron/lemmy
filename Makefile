@@ -25,6 +25,25 @@ git-init:
 	git add .
 	git commit -m "Initial commit."
 
+ifeq "$(APP_LANGUAGE)" "coffeescript"
+create:
+	mkdir $(SOURCE_DIRECTORY)
+	mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
+	mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
+	mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
+	echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
+	echo "APP_LANGUAGE = coffeescript" > .lemmy/setup
+	echo $(GITIGNORE_CS) > .gitignore
+	make git-init
+else
+create:
+	mkdir $(LIBRARY_DIRECTORY)
+	mkdir $(MODULES_DIRECTORY)
+	mkdir $(TESTING_DIRECTORY)
+	echo $(MODULAR_JS) > app.js
+	echo $(GITIGNORE_JS) > .gitignore
+	make git-init
+endif
 
 dependencies-deploy:
 	npm install --production
