@@ -22,9 +22,9 @@ clean:
 endif
 
 git-init:
-	git init
-	git add .
-	git commit -m "Initial commit."
+	@git init
+	@git add .
+	@git commit -m "Initial commit."
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 create:
