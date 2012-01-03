@@ -7,18 +7,18 @@ include .lemmy/licenses
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 clean:
-	rm -f ./*.log
-	rm -f ./$(APP_FILE)
-	rm -drf $(LIBRARY_DIRECTORY)
-	rm -drf $(MODULES_DIRECTORY)
-	rm -drf $(DEPENDENCIES_DIRECTORY)
-	rm -drf $(TESTING_DIRECTORY)
-	rm -drf $(DEPLOYMENT_DIRECTORY)
+	@rm -f ./*.log
+	@rm -f ./$(APP_FILE)
+	@rm -drf $(LIBRARY_DIRECTORY)
+	@rm -drf $(MODULES_DIRECTORY)
+	@rm -drf $(DEPENDENCIES_DIRECTORY)
+	@rm -drf $(TESTING_DIRECTORY)
+	@rm -drf $(DEPLOYMENT_DIRECTORY)
 else
 clean:
-	rm -f *.log
-	rm -drf $(DEPENDENCIES_DIRECTORY)
-	rm -drf $(DEPLOYMENT_DIRECTORY)
+	@rm -f *.log
+	@rm -drf $(DEPENDENCIES_DIRECTORY)
+	@rm -drf $(DEPLOYMENT_DIRECTORY)
 endif
 
 git-init:
