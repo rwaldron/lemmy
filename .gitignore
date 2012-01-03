@@ -1,6 +1,2 @@
 .DS_Store 
-Makefile 
-*.log 
-.lemmy/ 
-node_modules/ 
-deploy/
+*.log
