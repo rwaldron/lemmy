@@ -1,7 +1,0 @@
-.DS_Store
-*.log
-lib/
-modules/
-node_modules/
-test/
-deploy/
