@@ -28,25 +28,29 @@ git-init:
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 create:
-	mkdir $(SOURCE_DIRECTORY)
-	mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
-	mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
-	mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
+	@mkdir $(SOURCE_DIRECTORY)
+	@mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
+	@mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
+	@mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
+	@rm -drf .git
+	@rm README.md LICENSE .gitignore
 	@echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
-	rm README.md LICENSE
 	@echo "APP_LANGUAGE = coffeescript" > .lemmy/setup
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
-	make git-init
+	@make git-init
 else
 create:
-	mkdir $(LIBRARY_DIRECTORY)
-	mkdir $(MODULES_DIRECTORY)
-	mkdir $(TESTING_DIRECTORY)
-	echo $(MODULAR_JS) > app.js
+	@echo "Startig the creation of the project directory structure..."
+	@mkdir $(LIBRARY_DIRECTORY)
+	@mkdir $(MODULES_DIRECTORY)
+	@mkdir $(TESTING_DIRECTORY)
+	@rm -drf .git
+	@rm README.md LICENSE .gitignore
+	@echo $(MODULAR_JS) > app.js
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
-	make git-init
+	@make git-init
 endif
 
 mit-license:
