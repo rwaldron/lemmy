@@ -59,16 +59,16 @@ PACKAGE = '{\
 \n\t"main": "./app.js",\
 \n\t"engines": {\
 \n\t\t"node": ">= 0.4.0 < 0.7.0"\
-\n\t}\
+\n\t},\
 \n\t"directories": {\
 \n\t\t"lib": "./lib",\
 \n\t\t"modules": "./modules",\
 \n\t\t"node_modules": "./node_modules",\
 \n\t\t"test": "./test"\
-\n\t}\
+\n\t},\
 \n\t"dependencies": {\
 \n\t\t"express": "2.5.2"\
-\n\t}\
+\n\t},\
 \n\t"devDependencies": {\
 \n\t\t"mocha": "0.5.0",\
 \n\t\t"should": "0.4.1"'
@@ -78,7 +78,7 @@ PACKAGE += ',\
 \n\t\t"jitter": "1.1.1"'
 endif
 
-PACKAGE += '\n\t}\
+PACKAGE += '\n\t},\
 \n\t"repositories": [],\
 \n\t"bugs": "http://bugs.example.com",\
 \n\t"maintainers": [],\
