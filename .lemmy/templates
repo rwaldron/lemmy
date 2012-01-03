@@ -1,19 +1,15 @@
-GITIGNORE_JS = ".DS_Store\
+GITIGNORE = ".DS_Store\
 \nMakefile\
 \n*.log\
 \n.lemmy/\
 \nnode_modules/\
 \ndeploy/"
 
-GITIGNORE_CS = ".DS_Store\
-\nMakefile\
-\n*.log\
-\n.lemmy/\
-\nlib/\
+ifeq "$(APP_LANGUAGE)" "coffeescript"
+GITIGNORE += "\nlib/\
 \nmodules/\
-\nnode_modules/\
-\ntest/\
-\ndeploy/"
+\ntest/"
+endif
 
 MODULAR_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
@@ -21,13 +17,16 @@ MODULAR_JS = "var express = require('express');\
 \n\tapp.use(express.logger());\
 \n\tapp.use(express.methodOverride());\
 \n\tapp.use(express.bodyParser());\
-\n\tapp.use(express.router());\
+\n\tapp.use(express.router);\
 \n});\
 \n\napp.configure(function(){\
 \n\tapp.use(express.errorHandler({\
 \n\t\tdumpExceptions: true,\
 \n\t\tshowStack: true\
 \n\t}));\
+\n});\
+\n\napp.configure(function(){\
+\n\tapp.use(express.errorHandler());\
 \n});\
 \n\napp.listen(3000);"
 
@@ -37,7 +36,7 @@ MODULAR_CS = "express = require 'express'\
 \n\tapp.use express.logger()\
 \n\tapp.use express.methodOverride()\
 \n\tapp.use express.bodyParser()\
-\n\tapp.use express.router()\
+\n\tapp.use express.router\
 \n\treturn\
 \n\napp.configure 'development', ->\
 \n\tapp.use express.errorHandler(\
@@ -45,4 +44,44 @@ MODULAR_CS = "express = require 'express'\
 \n\t\tshowStack: true\
 \n\t)\
 \n\treturn\
+\n\napp.configure 'production', ->\
+\n\tapp.use express.errorHandler()\
+\n\treturn\
 \n\napp.listen 3000"
+
+PACKAGE = '{\
+\n\t"name": "$(APP_NAME)",\
+\n\t"description": "Project description goes here...",\
+\n\t"version": "0.0.1",\
+\n\t"author": "$(APP_AUTHOR) <$(APP_EMAIL)>",\
+\n\t"homepage": "$(APP_URL)",\
+\n\t"keywords": [],\
+\n\t"main": "./app.js",\
+\n\t"engines": {\
+\n\t\t"node": ">= 0.4.0 < 0.7.0"\
+\n\t}\
+\n\t"directories": {\
+\n\t\t"lib": "./lib",\
+\n\t\t"modules": "./modules",\
+\n\t\t"node_modules": "./node_modules",\
+\n\t\t"test": "./test"\
+\n\t}\
+\n\t"dependencies": {\
+\n\t\t"express": "2.5.2"\
+\n\t}\
+\n\t"devDependencies": {\
+\n\t\t"mocha": "0.5.0",\
+\n\t\t"should": "0.4.1"'
+
+ifeq "$(APP_LANGUAGE)" "coffeescript"
+PACKAGE += ',\
+\n\t\t"jitter": "1.1.1"'
+endif
+
+PACKAGE += '\n\t}\
+\n\t"repositories": [],\
+\n\t"bugs": "http://bugs.example.com",\
+\n\t"maintainers": [],\
+\n\t"contributors": [],\
+\n\t"licenses": []\
+\n}'

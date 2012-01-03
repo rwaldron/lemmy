@@ -3,6 +3,7 @@ include .lemmy/directories
 include .lemmy/executables
 include .lemmy/templates
 include .lemmy/test
+include .lemmy/licenses
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 clean:
@@ -31,9 +32,11 @@ create:
 	mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
 	mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
 	mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
-	echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
-	echo "APP_LANGUAGE = coffeescript" > .lemmy/setup
-	echo $(GITIGNORE_CS) > .gitignore
+	@echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
+	rm README.md LICENSE
+	@echo "APP_LANGUAGE = coffeescript" > .lemmy/setup
+	@echo $(PACKAGE) > package.json
+	@echo $(GITIGNORE) > .gitignore
 	make git-init
 else
 create:
@@ -41,9 +44,13 @@ create:
 	mkdir $(MODULES_DIRECTORY)
 	mkdir $(TESTING_DIRECTORY)
 	echo $(MODULAR_JS) > app.js
-	echo $(GITIGNORE_JS) > .gitignore
+	@echo $(PACKAGE) > package.json
+	@echo $(GITIGNORE) > .gitignore
 	make git-init
 endif
+
+mit-license:
+	@echo $(MIT_LICENSE) > LICENSE
 
 ifeq "$(APP_ENVIRONMENT)" "production"
 dependencies:
@@ -53,14 +60,18 @@ dependencies:
 	npm install
 endif
 
+ifeq "$(APP_LANGUAGE)" "coffeescript"
 build:
 	$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
 	$(COFFEE) --compile --output $(LIBRARY_DIRECTORY) $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
 	$(COFFEE) --compile --output $(MODULES_DIRECTORY) $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
 	$(COFFEE) --compile --output $(TESTING_DIRECTORY) $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
+endif
 
+ifeq "$(APP_LANGUAGE)" "coffeescript"
 watch:
 	$(JITTER) $(SOURCE_DIRECTORY) . $(TEST_DIRECTORY)
+endif
 
 run:
 	node app.js
@@ -82,18 +93,31 @@ deploy:
 	make dependencies APP_ENVIRONMENT=production
 	mkdir $(DEPLOYMENT_DIRECTORY)
 	cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
-	if [ -d "$(LIBRARY_DIRECTORY)" ]; then cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	if [ -d "$(LIBRARY_DIRECTORY)" ]; then \
+		cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
+	fi
+	if [ -d "$(MODULES_DIRECTORY)" ]; then \
+		cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
+	fi
+	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then \
+		cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
+	fi
 else
 deploy:
 	make clean
 	make dependencies APP_ENVIRONMENT=production
 	mkdir $(DEPLOYMENT_DIRECTORY)
 	cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
-	if [ -d "$(LIBRARY_DIRECTORY)" ]; then cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	if [ -d "$(LIBRARY_DIRECTORY)" ]; then \
+		cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY)\
+	fi
+	if [ -d "$(MODULES_DIRECTORY)" ]; then \
+		cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
+	fi
+	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then \
+		cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
+	fi
 endif
 
-.PHONY: clean create dependencies build watch run test deploy
+.PHONY: clean create mit-license dependencies build watch run test deploy
+

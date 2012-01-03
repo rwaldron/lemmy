@@ -1,2 +1,7 @@
 APP_ENVIRONMENT = development
+APP_YEAR = $(shell date +%Y)
+APP_NAME = $(shell basename `pwd`)
+APP_AUTHOR = XXX
+APP_EMAIL = xxx@example.com
+APP_URL = http://example.com
 APP_FILE = app.js

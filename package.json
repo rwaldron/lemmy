@@ -1,63 +1,30 @@
-{
-	"name": "lemmy",
-	"description": "49% Motherfucker | 51% Son of a Bitch Coffee-Script Express+Mocha Boilerplate.",
-	"version": "0.0.1",
-	"author": "Javier Cicchelli <javier@rock-n-code.com>",
-	"homepage": "http://rock-n-code.com",
-	"keywords": [
-		"javascript",
-		"coffee-script",
-		"express",
-		"mocha",
-		"web",
-		"boilerplate"
-	],
-	"main": "./app.js",
+{ 
+	"name": "lemmy", 
+	"description": "Project description goes here...", 
+	"version": "0.0.1", 
+	"author": "XXX <xxx@example.com>", 
+	"homepage": "http://example.com", 
+	"keywords": [], 
+	"main": "./app.js", 
 	"engines": { 
-		"node": ">= 0.4.0 < 0.7.0"
-	},
-	"scripts": {
-    	"clean": "make clean",
-    	"dependencies": "make dependencies",
-    	"dependencies-deploy": "make dependencies-deploy",
-    	"build": "make build",
-    	"watch": "make watch",
-    	"test": "make test",
-    	"deploy": "make deploy"
-	},
-	"directories": {
-		"src": "./src",
-		"lib": "./lib",
-		"modules": "./modules",
-		"node_modules": "./node_modules",
-		"test": "./test"
-	},
-	"dependencies": {
-		"express": "2.5.2"
-	},
-	"devDependencies": {
-		"mocha": "0.5.0",
-		"should": "0.4.1",
-		"jitter": "1.1.1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/rock-n-code/lemmy"
-	},
-	"bugs": {
-		"url": "https://github.com/rock-n-code/lemmy/issues"
-	},
-	"contributors": [
-		{
-			"name": "Javier Cicchelli",
-			"url": "http://github.com/mr-rock"
-		}
-	],
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "./LICENSE"
-		}
-	],
-	"private": true
+		"node": ">= 0.4.0 < 0.7.0" 
+	} 
+	"directories": { 
+		"lib": "./lib", 
+		"modules": "./modules", 
+		"node_modules": "./node_modules", 
+		"test": "./test" 
+	} 
+	"dependencies": { 
+		"express": "2.5.2" 
+	} 
+	"devDependencies": { 
+		"mocha": "0.5.0", 
+		"should": "0.4.1" 
+	} 
+	"repositories": [], 
+	"bugs": "http://bugs.example.com", 
+	"maintainers": [], 
+	"contributors": [], 
+	"licenses": [] 
 }
