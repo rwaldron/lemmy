@@ -91,35 +91,23 @@ test:
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 deploy:
-	make build
-	rm -drf $(DEPENDENCIES_DIRECTORY)
-	make dependencies APP_ENVIRONMENT=production
-	mkdir $(DEPLOYMENT_DIRECTORY)
-	cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
-	if [ -d "$(LIBRARY_DIRECTORY)" ]; then \
-		cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
-	fi
-	if [ -d "$(MODULES_DIRECTORY)" ]; then \
-		cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
-	fi
-	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then \
-		cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
-	fi
+	@make build
+	@rm -drf $(DEPENDENCIES_DIRECTORY)
+	@make dependencies APP_ENVIRONMENT=production
+	@mkdir $(DEPLOYMENT_DIRECTORY)
+	@cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
+	@if [ -d "$(LIBRARY_DIRECTORY)" ]; then cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	@if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 else
 deploy:
-	make clean
-	make dependencies APP_ENVIRONMENT=production
-	mkdir $(DEPLOYMENT_DIRECTORY)
-	cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
-	if [ -d "$(LIBRARY_DIRECTORY)" ]; then \
-		cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY)\
-	fi
-	if [ -d "$(MODULES_DIRECTORY)" ]; then \
-		cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
-	fi
-	if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then \
-		cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY) \
-	fi
+	@make clean
+	@make dependencies APP_ENVIRONMENT=production
+	@mkdir $(DEPLOYMENT_DIRECTORY)
+	@cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
+	@if [ -d "$(LIBRARY_DIRECTORY)" ]; then cp -r $(LIBRARY_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	@if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 endif
 
 .PHONY: clean create mit-license dependencies build watch run test deploy
