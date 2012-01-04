@@ -57,10 +57,10 @@ mit-license:
 
 ifeq "$(APP_ENVIRONMENT)" "production"
 dependencies:
-	npm install --production
+	@npm install --production
 else
 dependencies:
-	npm install
+	@npm install
 endif
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
