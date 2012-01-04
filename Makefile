@@ -65,10 +65,10 @@ endif
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
 build:
-	$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
-	$(COFFEE) --compile --output $(LIBRARY_DIRECTORY) $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
-	$(COFFEE) --compile --output $(MODULES_DIRECTORY) $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
-	$(COFFEE) --compile --output $(TESTING_DIRECTORY) $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
+	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
+	@$(COFFEE) --compile --output $(LIBRARY_DIRECTORY) $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
+	@$(COFFEE) --compile --output $(MODULES_DIRECTORY) $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
+	@$(COFFEE) --compile --output $(TESTING_DIRECTORY) $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
 endif
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
