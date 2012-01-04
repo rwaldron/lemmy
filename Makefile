@@ -27,7 +27,7 @@ git-init:
 	@git commit -m "Initial commit."
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
-create:
+setup:
 	@mkdir $(SOURCE_DIRECTORY)
 	@mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
 	@mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
@@ -40,8 +40,7 @@ create:
 	@echo $(GITIGNORE) > .gitignore
 	@make git-init
 else
-create:
-	@echo "Startig the creation of the project directory structure..."
+setup:
 	@mkdir $(LIBRARY_DIRECTORY)
 	@mkdir $(MODULES_DIRECTORY)
 	@mkdir $(TESTING_DIRECTORY)
