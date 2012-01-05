@@ -1,3 +1,20 @@
+HELPMENU = "\
+\n---------------------------------------------------------------------------------\
+\n| LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha Boilerplate. |\
+\n---------------------------------------------------------------------------------\
+\n\nList of Commands you're able to use:\
+\n\n-> setup [APP_LANGUAGE=CS]\tKick-start your JS/CS Express project for once and for all (JS is default).\
+\n-> dependencies\t\t\tInstall locally all the dependencies defined on the package JSON file.\
+\n-> clean\t\t\tClean-up all the generated code from your Express project.\
+\n-> build\t\t\tCompiles your CS code into the JS equivalent.\
+\n-> watch\t\t\tWatches any change on your CS code and automatically compiles it into its JS equivalent.\
+\n-> run\t\t\t\tRun your project on Node.JS\
+\n-> test\t\t\t\tTest your Express project using Mocha.\
+\n-> deploy\t\t\tPrepares your Express project for deployment.\
+\n-> mit-license\t\t\tGenerate a MIT license for your Express project.\
+\n-> help\t\t\t\tDisplay the Help menu you're reading right now.\
+\n"
+
 GITIGNORE = ".DS_Store\
 \nMakefile\
 \n*.log\

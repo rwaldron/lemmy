@@ -5,7 +5,9 @@ include .lemmy/templates
 include .lemmy/test
 include .lemmy/licenses
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+help:
+	@echo $(HELPMENU)
+
 ifeq "$(APP_LANGUAGE)" "CS"
 clean:
 	@rm -f ./*.log
@@ -111,5 +113,5 @@ deploy:
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 endif
 
-.PHONY: clean create mit-license dependencies build watch run test deploy
+.PHONY: help clean create mit-license dependencies build watch run test deploy
 
