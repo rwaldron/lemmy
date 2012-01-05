@@ -5,7 +5,7 @@ GITIGNORE = ".DS_Store\
 \nnode_modules/\
 \ndeploy/"
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 GITIGNORE += "\nlib/\
 \nmodules/\
 \ntest/"
@@ -73,7 +73,7 @@ PACKAGE = '{\
 \n\t\t"mocha": "0.5.0",\
 \n\t\t"should": "0.4.1"'
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 PACKAGE += ',\
 \n\t\t"jitter": "1.1.1"'
 endif

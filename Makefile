@@ -6,6 +6,7 @@ include .lemmy/test
 include .lemmy/licenses
 
 ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 clean:
 	@rm -f ./*.log
 	@rm -f ./$(APP_FILE)
@@ -26,7 +27,7 @@ git-init:
 	@git add .
 	@git commit -m "Initial commit."
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 setup:
 	@mkdir $(SOURCE_DIRECTORY)
 	@mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
@@ -35,7 +36,7 @@ setup:
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
 	@echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
-	@echo "APP_LANGUAGE = coffeescript" > .lemmy/setup
+	@echo "APP_LANGUAGE = CS" > .lemmy/setup
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
 	@make git-init
@@ -63,7 +64,7 @@ dependencies:
 	@npm install
 endif
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 build:
 	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
 	@$(COFFEE) --compile --output $(LIBRARY_DIRECTORY) $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
@@ -71,7 +72,7 @@ build:
 	@$(COFFEE) --compile --output $(TESTING_DIRECTORY) $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
 endif
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 watch:
 	$(JITTER) $(SOURCE_DIRECTORY) . $(TEST_DIRECTORY)
 endif
@@ -89,7 +90,7 @@ test:
 		--watch \
 		$(TEST_FILES)
 
-ifeq "$(APP_LANGUAGE)" "coffeescript"
+ifeq "$(APP_LANGUAGE)" "CS"
 deploy:
 	@make build
 	@rm -drf $(DEPENDENCIES_DIRECTORY)
