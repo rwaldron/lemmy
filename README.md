@@ -69,7 +69,7 @@ implement on __Lemmy__ in the near future, in random order:
 
 * [HTML5 boilerplate][10] integration on the View's layout.
 
-## Contributors
+### Contributors
 
 The following people are helping to make of __Lemmy__ an essential tool
 for every [Express][4] developer:
