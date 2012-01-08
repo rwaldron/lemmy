@@ -28,18 +28,24 @@ following:
 
 * Fork this project and rename it as you like.
 
+```shell
   git clone https://github.com/rock-n-code/lemmy your_project_name
+```
 
 * Setup your project and choose your language of choice
 
+```shell
   cd your_project_name && make setup [APP_LANGUAGE=CS]
+```
 
 * Modify the *package.json* file to your requirements with your Text
   Editor of choice.
 
 * Install all the dependencies locally.
 
+```shell
   make dependencies
+```
 
 ## Available Commands
 
