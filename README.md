@@ -1,4 +1,4 @@
-# LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha Boilerplate
+## LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha project Boilerplate
 
 No better yet humble hommage to the Godfather of Heavy Metal, __[Lemmy Kilmister][0]__. 
 Perhaps you may have heard of him as the trust-worthy roadie of *[Jimi
@@ -15,13 +15,13 @@ management of the most common tasks during the development, testing, and
 deployment of your project by just using Makefile and a couple of Bash commands
 available on your OSX system.
 
-## Pre-Requisites
+### Pre-Requisites
 
 You're required to use a BSD-like system that support Makefiles, uses
 [Bash shell][6], have [Git source code management system][7] and [Node.JS][8] installed 
 on your machine. That's all you need!
 
-## How to Use
+### How to Use
 
 It is very easy to use __Lemmy__. In fact, all you need to do is the
 following:
@@ -47,7 +47,7 @@ following:
   make dependencies
 ```
 
-## Available Commands
+### Available Commands
 
 The commands __Lemmy__ provides you are:
 
@@ -62,7 +62,7 @@ The commands __Lemmy__ provides you are:
 * *mit-license* : Generate a MIT license for your Express project.
 * *help* : Display the Help menu you're reading right now.
 
-## ToDos
+### ToDos
 
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
@@ -81,7 +81,7 @@ added to this list by default.
 
 ![Lemmy Kilmister][9]
 
-## MIT License
+### MIT License
 
 Copyright (c) 2011-2012 __Javier Cicchelli__ (javier@rock-n-code.com)
 
