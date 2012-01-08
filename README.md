@@ -15,40 +15,65 @@ management of the most common tasks during the development, testing, and
 deployment of your project by just using Makefile and a couple of Bash commands
 available on your OSX system.
 
-## Philosophy
-
-...
-
 ## Pre-Requisites
 
-...
+You're required to use a BSD-like system that support Makefiles, uses
+[Bash shell][6], have [Git source code management system][7] and [Node.JS][8] installed 
+on your machine. That's all you need!
 
 ## How to Use
 
-...
+It is very easy to use __Lemmy__. In fact, all you need to do is the
+following:
+
+* Fork this project and rename it as you like.
+
+  git clone https://github.com/rock-n-code/lemmy your_project_name
+
+* Setup your project and choose your language of choice
+
+  cd your_project_name && make setup [APP_LANGUAGE=CS]
+
+* Modify the *package.json* file to your requirements with your Text
+  Editor of choice.
+
+* Install all the dependencies locally.
+
+  make dependencies
 
 ## Available Commands
 
-...
+The commands __Lemmy__ provides you are:
+
+* *setup* : Kick-start your JS/CS Express project for once and for all.
+* *dependencies* : Install locally all the dependencies defined on the package JSON file.
+* *clean* : Clean-up all the generated code from your Express project.
+* *build* : Compiles your CS code into the JS equivalent.
+* *watch* : Watches any change on your CS code and automatically compiles it into its JS equivalent.
+* *run* : Run your project on Node.JS
+* *test* : Test your Express project using Mocha.
+* *deploy* : Prepares your Express project for deployment.
+* *mit-license* : Generate a MIT license for your Express project.
+* *help* : Display the Help menu you're reading right now.
 
 ## ToDos
 
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
-* [HTML5 boilerplate][7] integration on the View's layout.
+* [HTML5 boilerplate][10] integration on the View's layout.
 
 ## Contributors
 
 The following people are helping to make of __Lemmy__ an essential tool
 for every [Express][4] developer:
 
-* [Javier Cicchelli][8]
+* [Javier Cicchelli][11]
 
 No matter how small or big your contribution to this project, you'll be
 added to this list by default.
 
-![Lemmy Kilmister][6]
+![Lemmy Kilmister][9]
 
 ## MIT License
 
@@ -77,7 +102,10 @@ OTHER DEALINGS IN THE SOFTWARE.
 [3]: http://www.imotorhead.com
 [4]: http://expressjs.com
 [5]: http://coffeescript.org
-[6]: http://30daysout.files.wordpress.com/2010/12/lemmypublicity1robertjohn_20101130_123211.jpg
-[7]: https://github.com/h5bp/html5-boilerplate
-[8]: https://github.com/mr-rock
+[6]: http://www.gnu.org/software/bash
+[7]: http://git-scm.com
+[8]: http://nodejs.org
+[9]: http://30daysout.files.wordpress.com/2010/12/lemmypublicity1robertjohn_20101130_123211.jpg
+[10]: https://github.com/h5bp/html5-boilerplate
+[11]: https://github.com/mr-rock
 
