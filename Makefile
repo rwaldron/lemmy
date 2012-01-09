@@ -80,7 +80,7 @@ watch:
 endif
 
 run:
-	node app.js
+	NODE_ENV=development node app.js
 
 test:
 	@NODE_ENV=test $(MOCHA) \
