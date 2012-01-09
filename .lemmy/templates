@@ -36,13 +36,13 @@ MODULAR_JS = "var express = require('express');\
 \n\tapp.use(express.bodyParser());\
 \n\tapp.use(express.router);\
 \n});\
-\n\napp.configure(function(){\
+\n\napp.configure('development', function(){\
 \n\tapp.use(express.errorHandler({\
 \n\t\tdumpExceptions: true,\
 \n\t\tshowStack: true\
 \n\t}));\
 \n});\
-\n\napp.configure(function(){\
+\n\napp.configure('production', function(){\
 \n\tapp.use(express.errorHandler());\
 \n});\
 \n\napp.listen(3000);"
