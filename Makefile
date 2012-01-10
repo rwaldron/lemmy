@@ -127,6 +127,28 @@ controller:
 endif
 endif
 
+ifeq "$(NAME)" ""
+model:
+	@echo "ERROR: You're required to give the NAME argument to the 'model' task to create a new model in your project."
+	@echo "SYNTAX: make model NAME=ModelName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+model:
+	@mkdir -p $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)
+	@echo "" > $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "The model '$(NAME)' had been generated in your project."
+else
+model:
+	@mkdir -p $(MODELS_DIRECTORY)
+	@echo "" > $(MODELS_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "The model '$(NAME)' had been generated in your project."
+endif
+endif
+
 ifeq "$(APP_LANGUAGE)" "CS"
 build:
 	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
