@@ -30,7 +30,7 @@ GITIGNORE += "\nlib/\
 \ntest/"
 endif
 
-MODULAR_JS = "var express = require('express');\
+APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function(){\
 \n\tapp.use(express.logger());\
@@ -49,7 +49,7 @@ MODULAR_JS = "var express = require('express');\
 \n});\
 \n\napp.listen(3000);"
 
-MODULAR_CS = "express = require 'express'\
+APP_CS = "express = require 'express'\
 \n\napp = express.createServer()\
 \n\napp.configure ->\
 \n\tapp.use express.logger()\

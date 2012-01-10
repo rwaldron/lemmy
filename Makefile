@@ -37,7 +37,7 @@ setup:
 	@mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
-	@echo $(MODULAR_CS) > $(SOURCE_DIRECTORY)/app.coffee
+	@echo $(APP_CS) > $(SOURCE_DIRECTORY)/app.coffee
 	@echo "APP_LANGUAGE = CS" > .lemmy/setup
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
@@ -49,7 +49,7 @@ setup:
 	@mkdir $(TESTING_DIRECTORY)
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
-	@echo $(MODULAR_JS) > app.js
+	@echo $(APP_JS) > app.js
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
 	@make git-init
