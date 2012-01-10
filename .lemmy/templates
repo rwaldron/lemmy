@@ -9,6 +9,7 @@ HELPMENU = "\
 \n-> dependencies\t\t\tInstall locally all the dependencies defined on the package JSON file.\
 \n-> clean\t\t\tClean-up all the generated code from your Express project.\
 \n-> module NAME=Module\t\tGenerate a new Module file and its respective Test file into your project.\
+\n-> middleware NAME=Middleware\tGenerate a new Middleware file and its respective Test file into your project.\
 \n-> route NAME=Route\t\tGenerate a new Route Container file and its respective Test file into your project.\
 \n-> controller NAME=Controller\tGenerate a new Controller file and its respective Test file into your project.\
 \n-> model NAME=Model\t\tGenerate a new Model file and its respective Test file into your project.\
