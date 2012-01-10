@@ -83,6 +83,28 @@ module:
 endif
 endif
 
+ifeq "$(NAME)" ""
+route:
+	@echo "ERROR: You're required to give the NAME argument to the 'route' task to create a new route container in your project."
+	@echo "SYNTAX: make route NAME=RouteContainerName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+route:
+	@mkdir -p $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)
+	@echo "" > $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "The route container '$(NAME)' had been generated in your project."
+else
+route:
+	@mkdir -p $(ROUTES_DIRECTORY)
+	@echo "" > $(ROUTES_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "The route container '$(NAME)' had been generated in your project."
+endif
+endif
+
 ifeq "$(APP_LANGUAGE)" "CS"
 build:
 	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
