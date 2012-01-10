@@ -61,6 +61,28 @@ dependencies:
 	@npm install
 endif
 
+ifeq "$(NAME)" ""
+module:
+	@echo "ERROR: You're required to give the NAME argument to the 'module' task to create a new module in your project."
+	@echo "SYNTAX: make module NAME=ModuleName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+module:
+	@mkdir -p $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
+	@echo "" > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "The module '$(NAME)' had been generated in your project."
+else
+module:
+	@mkdir -p $(MODULES_DIRECTORY)
+	@echo "" > $(MODULES_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "The module '$(NAME)' had been generated in your project."
+endif
+endif
+
 ifeq "$(APP_LANGUAGE)" "CS"
 build:
 	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
