@@ -105,6 +105,28 @@ route:
 endif
 endif
 
+ifeq "$(NAME)" ""
+controller:
+	@echo "ERROR: You're required to give the NAME argument to the 'controller' task to create a new controller in your project."
+	@echo "SYNTAX: make controller NAME=ControllerName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+controller:
+	@mkdir -p $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
+	@echo "" > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "The controller '$(NAME)' had been generated in your project."
+else
+controller:
+	@mkdir -p $(CONTROLLERS_DIRECTORY)
+	@echo "" > $(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "The controller '$(NAME)' had been generated in your project."
+endif
+endif
+
 ifeq "$(APP_LANGUAGE)" "CS"
 build:
 	@$(COFFEE) --compile --output . $(SOURCE_DIRECTORY)
