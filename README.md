@@ -54,6 +54,10 @@ The commands __Lemmy__ provides you are:
 * *setup* : Kick-start your JS/CS Express project for once and for all.
 * *dependencies* : Install locally all the dependencies defined on the package JSON file.
 * *clean* : Clean-up all the generated code from your Express project.
+* *module* : Generate a new Module file and its respective Test file into your project.
+* *route* : Generate a new Route Container file and its respective Test file into your project.
+* *controller* : Generate a new Controller file and its respective Test file into your project.
+* *model* : Generate a new Model file and its respective Test file into your project.
 * *build* : Compiles your CS code into the JS equivalent.
 * *watch* : Watches any change on your CS code and automatically compiles it into its JS equivalent.
 * *run* : Run your project on Node.JS
