@@ -8,6 +8,10 @@ HELPMENU = "\
 \n\n-> setup [APP_LANGUAGE=CS]\tKick-start your JS/CS Express project for once and for all (JS is default).\
 \n-> dependencies\t\t\tInstall locally all the dependencies defined on the package JSON file.\
 \n-> clean\t\t\tClean-up all the generated code from your Express project.\
+\n-> module NAME=Module\t\tGenerate a new Module file and its respective Test file into your project.\
+\n-> route NAME=Route\t\tGenerate a new Route Container file and its respective Test file into your project.\
+\n-> controller NAME=Controller\tGenerate a new Controller file and its respective Test file into your project.\
+\n-> model NAME=Model\t\tGenerate a new Model file and its respective Test file into your project.\
 \n-> build\t\t\tCompiles your CS code into the JS equivalent.\
 \n-> watch\t\t\tWatches any change on your CS code and automatically compiles it into its JS equivalent.\
 \n-> run\t\t\t\tRun your project on Node.JS\
