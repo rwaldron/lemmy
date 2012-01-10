@@ -33,10 +33,6 @@ git-init:
 
 ifeq "$(APP_LANGUAGE)" "CS"
 setup:
-	@mkdir $(SOURCE_DIRECTORY)
-	@mkdir $(SOURCE_DIRECTORY)/$(LIBRARY_DIRECTORY)
-	@mkdir $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
-	@mkdir $(SOURCE_DIRECTORY)/$(TESTING_DIRECTORY)
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
 	@echo $(APP_CS) > $(SOURCE_DIRECTORY)/app.coffee
@@ -46,9 +42,6 @@ setup:
 	@make git-init
 else
 setup:
-	@mkdir $(LIBRARY_DIRECTORY)
-	@mkdir $(MODULES_DIRECTORY)
-	@mkdir $(TESTING_DIRECTORY)
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
 	@echo $(APP_JS) > app.js
