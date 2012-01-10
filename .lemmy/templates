@@ -1,3 +1,5 @@
+FILENAME = $(NAME) | sed -e 's/\([A-Z]\)/\_\1/g' -e 's/\_//' | tr '[:upper:]' '[:lower:]'
+
 HELPMENU = "\
 \n---------------------------------------------------------------------------------\
 \n| LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha Boilerplate. |\
