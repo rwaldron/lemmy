@@ -84,6 +84,28 @@ endif
 endif
 
 ifeq "$(NAME)" ""
+middleware:
+	@echo "ERROR: You're required to give the NAME argument to the 'middleware' task to create a new middleware in your project."
+	@echo "SYNTAX: make middleware NAME=MiddlewareName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+middleware:
+	@mkdir -p $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
+	@echo "" > $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "The middleware '$(NAME)' had been generated in your project."
+else
+middleware:
+	@mkdir -p $(MIDDLEWARES_DIRECTORY)
+	@echo "" > $(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY))
+	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY))/$(shell echo $(FILENAME))-test.js
+	@echo "The middleware '$(NAME)' had been generated in your project."
+endif
+endif
+
+ifeq "$(NAME)" ""
 route:
 	@echo "ERROR: You're required to give the NAME argument to the 'route' task to create a new route container in your project."
 	@echo "SYNTAX: make route NAME=RouteContainerName"
