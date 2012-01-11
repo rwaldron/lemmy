@@ -35,6 +35,19 @@ GITIGNORE += "\nlib/\
 \ntest/"
 endif
 
+MIDDLEWARE_JS = "//var example = require('example');\
+\n\nmodule.exports = function(request, response, next) {\
+\n\tvar app = request.app;\
+\n\n\t// ... your code in here ...\
+\n\n\tnext();\
+\n};"
+
+MIDDLEWARE_CS = "#example = require 'example'\
+\n\nmodule.exports = (request, response, next) ->\
+\n\tapp = request.app\
+\n\n\t# ... your code in here ...\
+\n\n\tnext()"
+
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function(){\
