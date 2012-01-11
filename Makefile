@@ -69,16 +69,16 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 module:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@echo "" > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The module '$(NAME)' had been generated in your project."
 else
 module:
 	@mkdir -p $(MODULES_DIRECTORY)
-	@echo "" > $(MODULES_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@echo "" > $(MODULES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The module '$(NAME)' had been generated in your project."
 endif
 endif
@@ -91,16 +91,16 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 middleware:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@echo $(MIDDLEWARE_CS)  > $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The middleware '$(NAME)' had been generated in your project."
 else
 middleware:
 	@mkdir -p $(MIDDLEWARES_DIRECTORY)
-	@echo "" > $(MIDDLEWARES_DIRECTORY)/$(shell echo $(FILENAME)).js
-	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY))
-	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY))/$(shell echo $(FILENAME))-test.js
+	@echo $(MIDDLEWARE_JS) > $(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).js
+	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
+	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The middleware '$(NAME)' had been generated in your project."
 endif
 endif
@@ -113,16 +113,16 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 route:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@echo "" > $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The route container '$(NAME)' had been generated in your project."
 else
 route:
 	@mkdir -p $(ROUTES_DIRECTORY)
-	@echo "" > $(ROUTES_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@echo "" > $(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The route container '$(NAME)' had been generated in your project."
 endif
 endif
@@ -135,16 +135,16 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 controller:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@echo "" > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The controller '$(NAME)' had been generated in your project."
 else
 controller:
 	@mkdir -p $(CONTROLLERS_DIRECTORY)
-	@echo "" > $(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@echo "" > $(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The controller '$(NAME)' had been generated in your project."
 endif
 endif
@@ -157,16 +157,16 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 model:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME)).coffee
+	@echo "" > $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME))-test.coffee
+	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The model '$(NAME)' had been generated in your project."
 else
 model:
 	@mkdir -p $(MODELS_DIRECTORY)
-	@echo "" > $(MODELS_DIRECTORY)/$(shell echo $(FILENAME)).js
+	@echo "" > $(MODELS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(shell echo $(FILENAME))-test.js
+	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The model '$(NAME)' had been generated in your project."
 endif
 endif
