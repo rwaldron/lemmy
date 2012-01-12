@@ -135,14 +135,14 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 controller:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).coffee
+	@echo $(CONTROLLER_CS) > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
 	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The controller '$(NAME)' had been generated in your project."
 else
 controller:
 	@mkdir -p $(CONTROLLERS_DIRECTORY)
-	@echo "" > $(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js
+	@echo $(CONTROLLER_JS) > $(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
 	@echo "" > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The controller '$(NAME)' had been generated in your project."

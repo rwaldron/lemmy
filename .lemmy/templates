@@ -99,6 +99,38 @@ ROUTE_CS = "#example = require 'example'\
 \n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
 \n\t\t# ... your code goes in here ...\"
 
+CONTROLLER_JS = "//var example = require('example');\
+\n\nmodule.exports = {\
+\n\tindex: function(request, response) {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tshow: function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tedit: function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tupdate: function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tremove: function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n};"
+
+CONTROLLER_CS = "#example = require 'example'\
+\n\nmodule.exports = {\
+\n\tindex: (request, response) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tshow: (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tedit: (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tupdate: (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tremove: (request, response, next) ->\
+\n\t\t# ... your code goes in here ..."
+
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function(){\
