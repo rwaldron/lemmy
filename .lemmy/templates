@@ -67,6 +67,38 @@ MIDDLEWARE_CS = "#example = require 'example'\
 \n\n\t# ... your code goes in here ...\
 \n\n\tnext()"
 
+ROUTE_JS = "//var example = require('example');\
+\n\nmodule.exports = function(app) {\
+\n\tapp.all('/$(NAME_CAMELIZED)(/*)?', function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t});\
+\n\tapp.get('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t});\
+\n\tapp.post('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t});\
+\n\tapp.put('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t});\
+\n\tapp.del('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t});\
+\n};"
+
+ROUTE_CS = "#example = require 'example'\
+\n\nmodules.exports = (app) ->\
+\n\tapp.all '/$(NAME_CAMELIZED)(/*)?', (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tapp.get '/$(NAME_CAMELIZED)', (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tapp.post '/$(NAME_CAMELIZED)', (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tapp.put '/$(NAME_CAMELIZED)', (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
+\n\t\t# ... your code goes in here ...\"
+
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function(){\
