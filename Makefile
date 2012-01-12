@@ -69,14 +69,14 @@ else
 ifeq "$(APP_LANGUAGE)" "CS"
 module:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)
-	@echo "" > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED).coffee
+	@echo $(MODULE_CS) > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
 	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The module '$(NAME)' had been generated in your project."
 else
 module:
 	@mkdir -p $(MODULES_DIRECTORY)
-	@echo "" > $(MODULES_DIRECTORY)/$(NAME_CAMELIZED).js
+	@echo $(MODULE_JS) > $(MODULES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
 	@echo "" > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The module '$(NAME)' had been generated in your project."

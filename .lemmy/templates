@@ -36,6 +36,24 @@ GITIGNORE += "\nlib/\
 \ntest/"
 endif
 
+MODULE_JS = "module.exports = {\
+\n\t//var example = 0;\
+\n\n\tmethod1: function() {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tmethod2: function() {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n};"
+
+MODULE_CS = "module.exports = {\
+\n\t#example = 0\
+\n\n\tmethod1: ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tmethod2: ->\
+\n\t\t# ... your code goes in here ...\
+\n}"
+
 MIDDLEWARE_JS = "//var example = require('example');\
 \n\nmodule.exports = function(request, response, next) {\
 \n\tvar app = request.app;\
