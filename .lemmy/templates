@@ -131,6 +131,23 @@ CONTROLLER_CS = "#example = require 'example'\
 \n\n\tremove: (request, response, next) ->\
 \n\t\t# ... your code goes in here ..."
 
+MODEL_JS = "module.exports.$(NAME) = {\
+\n\t//var example = 0;\
+\n\n\tmethod1: function() {\
+\n\t\t// ... your code goes in here ...\
+\n\t},\
+\n\tmethod2: function() {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n};"
+
+MODEL_CS = "module.exports.$(NAME) = {\
+\n\t#example = 0\
+\n\n\tmethod1: ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\tmethod2: ->\
+\n\t\t# ... your code goes in here ..."
+
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function(){\
