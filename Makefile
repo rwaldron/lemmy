@@ -224,5 +224,5 @@ deploy:
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 endif
 
-.PHONY: help clean create mit-license dependencies build watch run test deploy
+.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy
 
