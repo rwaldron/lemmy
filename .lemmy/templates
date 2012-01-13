@@ -54,6 +54,37 @@ MODULE_CS = "module.exports = {\
 \n\t\t# ... your code goes in here ...\
 \n}"
 
+TESTMODULE_JS = "describe('$(NAME)', function() {\
+\n\tvar $(NAME_CAMELIZED) = require('../../$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)');\
+\n\n\tdescribe('#example', function() {\
+\n\t\tit('should not exist', function() {\
+\n\t\t\t$(NAME_CAMELIZED).should.not.have.property('example');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('#method1()', function() {\
+\n\t\tit('should exist.', function() {\
+\n\t\t\t$(NAME_CAMELIZED).should.have.property('method1');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('#method2()', function() {\
+\n\t\tit('should exist.', function() {\
+\n\t\t\t$(NAME_CAMELIZED).should.have.property('method2');\
+\n\t\t});\
+\n\t});\
+\n})"
+
+TESTMODULE_CS = "describe '$(NAME)', ->\
+\n\t$(NAME_CAMELIZED) = require '../../$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\n\tdescribe '#example', ->\
+\n\t\tit 'should not exist', ->\
+\n\t\t\t$(NAME_CAMELIZED).should.not.have.property 'example'\
+\n\n\tdescribe '#method1()', ->\
+\n\t\tit 'should exist', ->\
+\n\t\t\t$(NAME_CAMELIZED).should.have.property 'method1'\
+\n\n\tdescribe '#method2()', ->\
+\n\t\tit 'should exist', ->\
+\n\t\t\t$(NAME_CAMELIZED).should.have.property 'method2'"
+
 MIDDLEWARE_JS = "//var example = require('example');\
 \n\nmodule.exports = function(request, response, next) {\
 \n\tvar app = request.app;\
