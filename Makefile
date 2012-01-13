@@ -26,11 +26,6 @@ clean:
 	@rm -drf $(DEPLOYMENT_DIRECTORY)
 endif
 
-git-init:
-	@git init
-	@git add .
-	@git commit -m "Initial commit."
-
 ifeq "$(APP_LANGUAGE)" "CS"
 setup:
 	@rm -drf .git
@@ -204,17 +199,24 @@ deploy:
 	@make build
 	@rm -drf $(DEPENDENCIES_DIRECTORY)
 	@make dependencies APP_ENVIRONMENT=production
-	@mkdir $(DEPLOYMENT_DIRECTORY)
-	@cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
-	@if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	@if [ -d "$(ROUTES_DIRECTORY)" ]; then cp -r $(ROUTES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	@if [ -d "$(CONTROLLERS_DIRECTORY)" ]; then cp -r $(CONTROLLERS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	@if [ -d "$(MODELS_DIRECTORY)" ]; then cp -r $(MODELS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+	@make move_files-to-deployment
 else
 deploy:
 	@make clean
 	@make dependencies APP_ENVIRONMENT=production
+	@make move-files-to-deployment
+endif
+
+.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy
+
+# Helpers
+
+git-init:
+	@git init
+	@git add .
+	@git commit -m "Initial commit."
+
+move-files-to-deployment:
 	@mkdir $(DEPLOYMENT_DIRECTORY)
 	@cp $(APP_FILE) $(DEPLOYMENT_DIRECTORY)
 	@if [ -d "$(MODULES_DIRECTORY)" ]; then cp -r $(MODULES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
@@ -222,7 +224,4 @@ deploy:
 	@if [ -d "$(CONTROLLERS_DIRECTORY)" ]; then cp -r $(CONTROLLERS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(MODELS_DIRECTORY)" ]; then cp -r $(MODELS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-endif
-
-.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy
 
