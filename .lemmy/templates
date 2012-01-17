@@ -235,11 +235,11 @@ PACKAGE = '{\
 \n\t\t"test": "./test"\
 \n\t},\
 \n\t"dependencies": {\
-\n\t\t"express": "2.5.2"\
+\n\t\t"express": ">= 2.5.2"\
 \n\t},\
 \n\t"devDependencies": {\
-\n\t\t"mocha": "0.5.0",\
-\n\t\t"should": "0.4.1"'
+\n\t\t"mocha": ">= 0.5.0",\
+\n\t\t"should": ">= 0.4.1"'
 
 ifeq "$(APP_LANGUAGE)" "CS"
 PACKAGE += ',\
