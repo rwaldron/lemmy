@@ -130,37 +130,110 @@ ROUTE_CS = "#example = require 'example'\
 \n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
 \n\t\t# ... your code goes in here ...\"
 
-CONTROLLER_JS = "//var example = require('example');\
-\n\nmodule.exports = {\
-\n\tindex: function(request, response) {\
-\n\t\t// ... your code goes in here ...\
-\n\t},\
-\n\tshow: function(request, response, next) {\
-\n\t\t// ... your code goes in here ...\
-\n\t},\
-\n\tedit: function(request, response, next) {\
-\n\t\t// ... your code goes in here ...\
-\n\t},\
-\n\tupdate: function(request, response, next) {\
-\n\t\t// ... your code goes in here ...\
-\n\t},\
-\n\tremove: function(request, response, next) {\
+CONTROLLER_JS = "//var Example = require('example');\
+\n\nvar $(NAME) = exports = module.exports = function $(NAME) {\
+\n\t//var model = new Example();\
+\n\n\tfunction index(request, response) {\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
+\n\n\tfunction show(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n\n\tfunction edit(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n\n\tfunction update(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n\n\tfunction remove(request, response, next) {\
+\n\t\t// ... your code goes in here ...\
+\n\t}\
+\n\n\treturn {\
+\n\t\tindex: index,\
+\n\t\tshow: show,\
+\n\t\tedit: edit,\
+\n\t\tupdate: update,\
+\n\t\tremove: remove\
+\n\t}
 \n};"
 
-CONTROLLER_CS = "#example = require 'example'\
-\n\nmodule.exports = {\
-\n\tindex: (request, response) ->\
+CONTROLLER_CS = "#Example = require 'example'\
+\n\n$(NAME) = exports = module.exports = $(NAME)() ->\
+\n\t#model = new Example()\
+\n\n\tindex(request, response) ->\
 \n\t\t# ... your code goes in here ...\
-\n\n\tshow: (request, response, next) ->\
+\n\n\tshow(request, response, next) ->\
 \n\t\t# ... your code goes in here ...\
-\n\n\tedit: (request, response, next) ->\
+\n\n\tedit(request, response, next) ->\
 \n\t\t# ... your code goes in here ...\
-\n\n\tupdate: (request, response, next) ->\
+\n\n\tupdate(request, response, next) ->\
 \n\t\t# ... your code goes in here ...\
-\n\n\tremove: (request, response, next) ->\
-\n\t\t# ... your code goes in here ..."
+\n\n\tremove(request, response, next) ->\
+\n\t\t# ... your code goes in here ...\
+\n\n\treturn {\
+\n\t\tindex: index,\
+\n\t\tshow: show,\
+\n\t\tedit: edit,\
+\n\t\tupdate: update,\
+\n\t\tremove: remove\
+\n\t}"
+
+TESTCONTROLLER_JS = "describe('$(NAME)', function() {\
+\n\tvar $(NAME) = require('../../$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)');
+\n\tvar controller = new $(NAME)();\
+\n\n\tdescribe('\#model', function() {\
+\n\t\tit('should not exist', function() {\
+\n\t\t\tcontroller.should.not.have.property('model');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('\#index()', function() {\
+\n\t\tit('should exist', function() {\
+\n\t\t\tcontroller.should.have.property('index');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('\#show()', function() {\
+\n\t\tit('should exist', function() {\
+\n\t\t\tcontroller.should.have.property('show');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('\#edit()', function() {\
+\n\t\tit('should exist', function() {\
+\n\t\t\tcontroller.should.have.property('edit');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('\#update()', function() {\
+\n\t\tit('should exist', function() {\
+\n\t\t\tcontroller.should.have.property('update');\
+\n\t\t});\
+\n\t});\
+\n\n\tdescribe('\#remove()', function() {\
+\n\t\tit('should exist', function() {\
+\n\t\t\tcontroller.should.have.property('remove');\
+\n\t\t});\
+\n\t});\
+\n});"
+
+TESTCONTROLLER_CS = "describe '$(NAME), ->\
+\n\t$(NAME) = require '../../$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\tcontroller = new $(NAME)()\
+\n\n\tdescribe '\#model', ->\
+\n\t\tit 'should not exist', ->
+\n\t\t\tcontroller.should.not.have.property 'model'\
+\n\n\tdescribe '\#index()', ->\
+\n\t\tit 'should exist', ->
+\n\t\t\tcontroller.should.have.property 'index'\
+\n\n\tdescribe '\#show()', ->\
+\n\t\tit 'should exist', ->
+\n\t\t\tcontroller.should.have.property 'show'\
+\n\n\tdescribe '\#edit()', ->\
+\n\t\tit 'should exist', ->
+\n\t\t\tcontroller.should.have.property 'edit'\
+\n\n\tdescribe '\#update()', ->\
+\n\t\tit 'should exist', ->
+\n\t\t\tcontroller.should.have.property 'update'\
+\n\n\tdescribe '\#remove()', ->\
+\n\t\tit 'should exist', ->
+\n\t\t\tcontroller.should.have.property 'remove'"
 
 MODEL_JS = "var $(NAME) = exports = module.exports = function $(NAME)() {\
 \n\tvar counter = -1;\
