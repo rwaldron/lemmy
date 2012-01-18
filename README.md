@@ -7,13 +7,15 @@ probably, as the relentless force behind the all-mighty *[Motörhead][3]*.
 
 As the remarkable individual, living legend and true rock-star; this
 tool aims at emulating all the characteristics that make of __Lemmy__ a
-one-of-a-kind person: *simple*, *straight-forward*, *generous*, *smart*, and *practical*.
+one-of-a-kind person: *simple*, *straight-forward*, *pragmatic*, and *practical*.
+
+### Purpose
 
 Designed from scratch to kick-start your *[Express][4]* application in 
 either *Javascript* or *[Coffee-Script][5]* in no time and agilize the 
 management of the most common tasks during the development, testing, and
 deployment of your project by just using Makefile and a couple of Bash commands
-available on your OSX system.
+available on your Linux or OSX system.
 
 ### Pre-Requisites
 
@@ -72,7 +74,9 @@ The commands __Lemmy__ provides you are:
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
-* [HTML5 boilerplate][10] integration on the View's layout.
+* Improve the *module*, *middleware*, *route*, *controller*, and *model* generation commands.
+* Implement the *view* generation command.
+* Integrate [HTML5 boilerplate][10] on the general layout generation.
 
 ### Contributors
 
