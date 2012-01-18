@@ -110,14 +110,14 @@ route:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)
 	@echo $(ROUTE_CS) > $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
+	@echo $(TESTROUTE_CS) > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The route container '$(NAME)' had been generated in your project."
 else
 route:
 	@mkdir -p $(ROUTES_DIRECTORY)
 	@echo $(ROUTE_JS) > $(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
+	@echo $(TESTROUTE_JS) > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The route container '$(NAME)' had been generated in your project."
 endif
 endif
