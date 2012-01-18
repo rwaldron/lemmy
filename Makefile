@@ -154,14 +154,14 @@ model:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)
 	@echo $(MODEL_CS) > $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
+	@echo $(TESTMODEL_CS) > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The model '$(NAME)' had been generated in your project."
 else
 model:
 	@mkdir -p $(MODELS_DIRECTORY)
 	@echo $(MODEL_JS) > $(MODELS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
+	@echo $(TESTMODEL_JS) > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The model '$(NAME)' had been generated in your project."
 endif
 endif
