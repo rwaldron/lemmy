@@ -694,7 +694,8 @@ PACKAGE = '{\
 
 ifeq "$(APP_LANGUAGE)" "CS"
 PACKAGE += ',\
-\n\t\t"jitter": "1.1.1"'
+\n\t\t"coffee-script": ">= 1.2.0",'
+\n\t\t"jitter": ">= 1.1.1"'
 endif
 
 PACKAGE += '\n\t},\
