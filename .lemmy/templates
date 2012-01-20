@@ -51,26 +51,26 @@ MODULE_JS = "module.exports = {\
 \n};"
 
 MODULE_CS = "module.exports = {\
-\n\t#example = 0\
+\n\t\#example = 0\
 \n\n\tmethod1: ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tmethod2: ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n}"
 
 TESTMODULE_JS = "describe('$(NAME)', function() {\
 \n\tvar $(NAME_CAMELIZED) = require('../../$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)');\
-\n\n\tdescribe('#example', function() {\
+\n\n\tdescribe('\#example', function() {\
 \n\t\tit('should not exist', function() {\
 \n\t\t\t$(NAME_CAMELIZED).should.not.have.property('example');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('#method1()', function() {\
+\n\n\tdescribe('\#method1()', function() {\
 \n\t\tit('should exist.', function() {\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property('method1');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('#method2()', function() {\
+\n\n\tdescribe('\#method2()', function() {\
 \n\t\tit('should exist.', function() {\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property('method2');\
 \n\t\t});\
@@ -78,14 +78,14 @@ TESTMODULE_JS = "describe('$(NAME)', function() {\
 \n})"
 
 TESTMODULE_CS = "describe '$(NAME)', ->\
-\n\t$(NAME_CAMELIZED) = require '../../$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'\
-\n\n\tdescribe '#example', ->\
+\n\t$(NAME_CAMELIZED) = require '../../$(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\n\tdescribe '\#example', ->\
 \n\t\tit 'should not exist', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.not.have.property 'example'\
-\n\n\tdescribe '#method1()', ->\
+\n\n\tdescribe '\#method1()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property 'method1'\
-\n\n\tdescribe '#method2()', ->\
+\n\n\tdescribe '\#method2()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property 'method2'"
 
@@ -96,10 +96,10 @@ MIDDLEWARE_JS = "//var example = require('example');\
 \n\n\tnext();\
 \n};"
 
-MIDDLEWARE_CS = "#example = require 'example'\
+MIDDLEWARE_CS = "\#example = require 'example'\
 \n\nmodule.exports = $(NAME_FUNCTIONALIZED)(request, response, next) ->\
 \n\tapp = request.app\
-\n\n\t# ... your code goes in here ...\
+\n\n\t\# ... your code goes in here ...\
 \n\n\tnext()"
 
 TESTMIDDLEWARE_JS = "describe('$(NAME)', function() {\
@@ -126,7 +126,7 @@ TESTMIDDLEWARE_JS = "describe('$(NAME)', function() {\
 \n});"
 
 TESTMIDDLEWARE_CS = "describe '$(NAME)', ->\
-\n\t$(NAME_FUNCTIONALIZED) = require '../../$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\t$(NAME_FUNCTIONALIZED) = require '../../$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
 \n\n\tapp.configure(->\
@@ -162,18 +162,18 @@ ROUTE_JS = "//var example = require('example');\
 \n\t});\
 \n};"
 
-ROUTE_CS = "#example = require 'example'\
+ROUTE_CS = "\#example = require 'example'\
 \n\nmodules.exports = (app) ->\
 \n\tapp.all '/$(NAME_CAMELIZED)(/*)?', (request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tapp.get '/$(NAME_CAMELIZED)', (request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tapp.post '/$(NAME_CAMELIZED)', (request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tapp.put '/$(NAME_CAMELIZED)', (request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
-\n\t\t# ... your code goes in here ...\"
+\n\t\t\# ... your code goes in here ...\"
 
 TESTROUTE_JS = "describe('$(NAME)', function(){\
 \n\tvar app = require('express').createServer();\
@@ -325,7 +325,7 @@ TESTROUTE_JS = "describe('$(NAME)', function(){\
 TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
-\n\n\trequire('../../$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)\
+\n\n\trequire('../../$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)\
 \n\n\tapp.listen 3000\
 \n\n\tdescribe '\#get()', ->\
 \n\t\tit '\'/$(NAME_CAMELIZED)\' route should exist', ->\
@@ -467,19 +467,19 @@ CONTROLLER_JS = "//var Example = require('example');\
 \n\t}\
 \n};"
 
-CONTROLLER_CS = "#Example = require 'example'\
+CONTROLLER_CS = "\#Example = require 'example'\
 \n\n$(NAME) = exports = module.exports = $(NAME)() ->\
-\n\t#model = new Example()\
+\n\t\#model = new Example()\
 \n\n\tindex(request, response) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tshow(request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tedit(request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tupdate(request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\tremove(request, response, next) ->\
-\n\t\t# ... your code goes in here ...\
+\n\t\t\# ... your code goes in here ...\
 \n\n\treturn {\
 \n\t\tindex: index,\
 \n\t\tshow: show,\
@@ -524,7 +524,7 @@ TESTCONTROLLER_JS = "describe('$(NAME)', function() {\
 \n});"
 
 TESTCONTROLLER_CS = "describe '$(NAME), ->\
-\n\t$(NAME) = require '../../$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\t$(NAME) = require '../../$(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'\
 \n\tcontroller = new $(NAME)()\
 \n\n\tdescribe '\#model', ->\
 \n\t\tit 'should not exist', ->\
@@ -609,7 +609,7 @@ TESTMODEL_JS = "describe('$(NAME)', function() {\
 \n});"
 
 TESTMODEL_CS = "describe '$(NAME)', ->\
-\n\t$(NAME) = require '../../$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\t$(NAME) = require '../../$(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)'\
 \n\tinstance = new $(NAME)()\
 \n\n\tdescribe '\#counter', ->\
 \n\t\tit 'should not exist', ->\
