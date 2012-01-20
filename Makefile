@@ -209,7 +209,10 @@ deploy:
 	@make move-files-to-deployment
 endif
 
-.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy
+version:
+	@echo "0.2.0"
+
+.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy version
 
 # Helpers
 
