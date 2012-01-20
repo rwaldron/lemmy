@@ -89,14 +89,14 @@ middleware:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
 	@echo $(MIDDLEWARE_CS)  > $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
+	@echo $(TESTMIDDLEWARE_CS) > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
 	@echo "The middleware '$(NAME)' had been generated in your project."
 else
 middleware:
 	@mkdir -p $(MIDDLEWARES_DIRECTORY)
 	@echo $(MIDDLEWARE_JS) > $(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
-	@echo "" > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
+	@echo $(TESTMIDDLEWARE_JS) > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
 	@echo "The middleware '$(NAME)' had been generated in your project."
 endif
 endif

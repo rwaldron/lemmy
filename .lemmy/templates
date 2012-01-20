@@ -90,17 +90,58 @@ TESTMODULE_CS = "describe '$(NAME)', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property 'method2'"
 
 MIDDLEWARE_JS = "//var example = require('example');\
-\n\nmodule.exports = function(request, response, next) {\
+\n\nmodule.exports = function $(NAME_FUNCTIONALIZED)(request, response, next) {\
 \n\tvar app = request.app;\
 \n\n\t// ... your code goes in here ...\
 \n\n\tnext();\
 \n};"
 
 MIDDLEWARE_CS = "#example = require 'example'\
-\n\nmodule.exports = (request, response, next) ->\
+\n\nmodule.exports = $(NAME_FUNCTIONALIZED)(request, response, next) ->\
 \n\tapp = request.app\
 \n\n\t# ... your code goes in here ...\
 \n\n\tnext()"
+
+TESTMIDDLEWARE_JS = "describe('$(NAME)', function() {\
+\n\tvar $(NAME_FUNCTIONALIZED) = require('../../$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)');\
+\n\tvar app = require('express').createServer();\
+\n\tvar http = require('http');\
+\n\n\tapp.configure(function() {\
+\n\t\tapp.use($(NAME_FUNCTIONALIZED));\
+\n\t});\
+\n\n\tapp.get('/', function(request, response) {\
+\n\t\tresponse.end();\
+\n\t});\
+\n\n\tapp.listen(3000);\
+\n\n\tit('should exist', function() {\
+\n\t\tvar options = {\
+\n\t\t\thost: 'localhost',\
+\n\t\t\tport : 3000,\
+\n\t\t\tpath: '/'\
+\n\t\t};\
+\n\n\t\thttp.get(options, function(response) {\
+\n\t\t\tapp.stack[1]['handle'].name.should.eql($(NAME_FUNCTIONALIZED).name);\
+\n\t\t});\
+\n\t});\
+\n});"
+
+TESTMIDDLEWARE_CS = "describe '$(NAME)', ->\
+\n\t$(NAME_FUNCTIONALIZED) = require '../../$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'\
+\n\tapp = require('express').createServer()\
+\n\thttp = require 'http'\
+\n\n\tapp.configure(->\
+\n\t\tapp.use $(NAME_FUNCTIONALIZED)\
+\n\n\tapp.get '/', (request, response) ->\
+\n\t\tresponse.end()\
+\n\n\tapp.listen 3000\
+\n\n\tit 'should exist', ->\
+\n\t\toptions = {\
+\n\t\t\thost: 'localhost',\
+\n\t\t\tport : 3000,\
+\n\t\t\tpath: '/'\
+\n\t\t}\
+\n\n\t\thttp.get options, (response) ->\
+\n\t\t\tapp.stack[1]['handle'].name.should.eql($(NAME_FUNCTIONALIZED).name)"
 
 ROUTE_JS = "//var example = require('example');\
 \n\nmodule.exports = function(app) {\
