@@ -187,6 +187,7 @@ endif
 run:
 	NODE_ENV=development node app.js
 
+ifeq "$(APP_LANGUAGE)" "CS"
 test:
 	@NODE_ENV=test $(MOCHA) \
 		--require $(TEST_DEPENDENCY) \
@@ -195,7 +196,18 @@ test:
 		--slow $(TEST_THRESHOLD) \
 		--colors \
 		--watch \
-		$(TEST_FILES)
+		$(TEST_FILES_CS)
+else
+test:
+	@NODE_ENV=test $(MOCHA) \
+		--require $(TEST_DEPENDENCY) \
+		--reporter $(TEST_REPORTER) \
+		--ui $(TEST_INTERFACE) \
+		--slow $(TEST_THRESHOLD) \
+		--colors \
+		--watch \
+		$(TEST_FILES_JS)
+endif
 
 ifeq "$(APP_LANGUAGE)" "CS"
 deploy:
