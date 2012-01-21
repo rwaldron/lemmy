@@ -10,20 +10,17 @@ help:
 
 ifeq "$(APP_LANGUAGE)" "CS"
 clean:
-	@rm -f ./*.log
-	@rm -f ./$(APP_FILE)
+	@rm -f .log
+	@rm -f $(APP_FILE)
 	@rm -drf $(MODULES_DIRECTORY)
 	@rm -drf $(MIDDLEWARES_DIRECTORY)
 	@rm -drf $(ROUTES_DIRECTORY)
 	@rm -drf $(CONTROLLERS_DIRECTORY)
 	@rm -drf $(MODELS_DIRECTORY)
-	@rm -drf $(DEPENDENCIES_DIRECTORY)
-	@rm -drf $(TESTING_DIRECTORY)
 	@rm -drf $(DEPLOYMENT_DIRECTORY)
 else
 clean:
 	@rm -f *.log
-	@rm -drf $(DEPENDENCIES_DIRECTORY)
 	@rm -drf $(DEPLOYMENT_DIRECTORY)
 endif
 
