@@ -82,12 +82,15 @@ TESTMODULE_CS = "describe '$(NAME)', ->\
 \n\n\tdescribe '\#example', ->\
 \n\t\tit 'should not exist', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.not.have.property 'example'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#method1()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property 'method1'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#method2()', ->\
 \n\t\tit 'should exist', ->\
-\n\t\t\t$(NAME_CAMELIZED).should.have.property 'method2'"
+\n\t\t\t$(NAME_CAMELIZED).should.have.property 'method2'\
+\n\t\t\treturn"
 
 MIDDLEWARE_JS = "//var example = require('example');\
 \n\nmodule.exports = function $(NAME_FUNCTIONALIZED)(request, response, next) {\
@@ -97,10 +100,11 @@ MIDDLEWARE_JS = "//var example = require('example');\
 \n};"
 
 MIDDLEWARE_CS = "\#example = require 'example'\
-\n\nmodule.exports = $(NAME_FUNCTIONALIZED)(request, response, next) ->\
+\n\n$(NAME_FUNCTIONALIZED) = module.exports = (request, response, next) ->\
 \n\tapp = request.app\
 \n\n\t\# ... your code goes in here ...\
-\n\n\tnext()"
+\n\n\tnext()\
+\n\treturn"
 
 TESTMIDDLEWARE_JS = "describe('$(NAME)', function() {\
 \n\tvar $(NAME_FUNCTIONALIZED) = require('../../$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)');\
@@ -129,10 +133,12 @@ TESTMIDDLEWARE_CS = "describe '$(NAME)', ->\
 \n\t$(NAME_FUNCTIONALIZED) = require '../../$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
-\n\n\tapp.configure(->\
+\n\n\tapp.configure ->\
 \n\t\tapp.use $(NAME_FUNCTIONALIZED)\
+\n\t\treturn\
 \n\n\tapp.get '/', (request, response) ->\
 \n\t\tresponse.end()\
+\n\t\treturn\
 \n\n\tapp.listen 3000\
 \n\n\tit 'should exist', ->\
 \n\t\toptions = {\
@@ -141,7 +147,8 @@ TESTMIDDLEWARE_CS = "describe '$(NAME)', ->\
 \n\t\t\tpath: '/'\
 \n\t\t}\
 \n\n\t\thttp.get options, (response) ->\
-\n\t\t\tapp.stack[1]['handle'].name.should.eql($(NAME_FUNCTIONALIZED).name)"
+\n\t\t\tapp.stack[1]['handle'].name.should.eql($(NAME_FUNCTIONALIZED).name)\
+\n\t\t\treturn"
 
 ROUTE_JS = "//var example = require('example');\
 \n\nmodule.exports = function(app) {\
@@ -163,7 +170,7 @@ ROUTE_JS = "//var example = require('example');\
 \n};"
 
 ROUTE_CS = "\#example = require 'example'\
-\n\nmodules.exports = (app) ->\
+\n\nmodule.exports = (app) ->\
 \n\tapp.all '/$(NAME_CAMELIZED)(/*)?', (request, response, next) ->\
 \n\t\t\# ... your code goes in here ...\
 \n\n\tapp.get '/$(NAME_CAMELIZED)', (request, response, next) ->\
@@ -173,7 +180,7 @@ ROUTE_CS = "\#example = require 'example'\
 \n\n\tapp.put '/$(NAME_CAMELIZED)', (request, response, next) ->\
 \n\t\t\# ... your code goes in here ...\
 \n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
-\n\t\t\# ... your code goes in here ...\"
+\n\t\t\# ... your code goes in here ..."
 
 TESTROUTE_JS = "describe('$(NAME)', function(){\
 \n\tvar app = require('express').createServer();\
@@ -337,6 +344,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/$(NAME_CAMELIZED)/xxx/\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -346,6 +354,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/testing\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -355,6 +364,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 404\
+\n\t\t\t\treturn\
 \n\n\tdescribe '\#post()', ->\
 \n\t\tit '\'/$(NAME_CAMELIZED)\' route should exist', ->\
 \n\t\t\toptions = {\
@@ -365,6 +375,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/$(NAME_CAMELIZED)/xxx/\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -374,6 +385,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/testing\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -383,6 +395,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 404\
+\n\t\t\t\treturn\
 \n\n\tdescribe '\#put()', ->\
 \n\t\tit '\'/$(NAME_CAMELIZED)\' route should exist', ->\
 \n\t\t\toptions = {\
@@ -393,6 +406,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/$(NAME_CAMELIZED)/xxx/\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -402,6 +416,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/testing\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -411,6 +426,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 404\
+\n\t\t\t\treturn\
 \n\n\tdescribe '\#del()', ->\
 \n\t\tit '\'/$(NAME_CAMELIZED)\' route should exist', ->\
 \n\t\t\toptions = {\
@@ -422,6 +438,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
 \n\n\t\tit '\'/$(NAME_CAMELIZED)/xxx/\' route should exist', ->\
+\n\t\t\t\treturn\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
@@ -430,6 +447,7 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
 \n\t\t\t\tresponse.statusCode.should.eql 200\
+\n\t\t\t\treturn\
 \n\n\t\tit '\'/testing\' route should exist', ->\
 \n\t\t\toptions = {\
 \n\t\t\t\thost: 'localhost',\
@@ -438,7 +456,8 @@ TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\t\t\t\tmethod: 'DELETE'\
 \n\t\t\t}\
 \n\n\t\t\thttp.request options, (response) ->\
-\n\t\t\t\tresponse.statusCode.should.eql 404"
+\n\t\t\t\tresponse.statusCode.should.eql 404\
+\n\t\t\t\treturn"
 
 CONTROLLER_JS = "//var Example = require('example');\
 \n\nvar $(NAME) = exports = module.exports = function $(NAME) {\
@@ -468,25 +487,18 @@ CONTROLLER_JS = "//var Example = require('example');\
 \n};"
 
 CONTROLLER_CS = "\#Example = require 'example'\
-\n\n$(NAME) = exports = module.exports = $(NAME)() ->\
+\n\n$(NAME) = exports = module.exports = ->\
 \n\t\#model = new Example()\
-\n\n\tindex(request, response) ->\
+\n\n\tindex: (request, response) ->\
 \n\t\t\# ... your code goes in here ...\
-\n\n\tshow(request, response, next) ->\
+\n\n\tshow: (request, response, next) ->\
 \n\t\t\# ... your code goes in here ...\
-\n\n\tedit(request, response, next) ->\
+\n\n\tedit: (request, response, next) ->\
 \n\t\t\# ... your code goes in here ...\
-\n\n\tupdate(request, response, next) ->\
+\n\n\tupdate: (request, response, next) ->\
 \n\t\t\# ... your code goes in here ...\
-\n\n\tremove(request, response, next) ->\
-\n\t\t\# ... your code goes in here ...\
-\n\n\treturn {\
-\n\t\tindex: index,\
-\n\t\tshow: show,\
-\n\t\tedit: edit,\
-\n\t\tupdate: update,\
-\n\t\tremove: remove\
-\n\t}"
+\n\n\tremove: (request, response, next) ->\
+\n\t\t\# ... your code goes in here ..."
 
 TESTCONTROLLER_JS = "describe('$(NAME)', function() {\
 \n\tvar $(NAME) = require('../../$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)');
@@ -529,21 +541,27 @@ TESTCONTROLLER_CS = "describe '$(NAME), ->\
 \n\n\tdescribe '\#model', ->\
 \n\t\tit 'should not exist', ->\
 \n\t\t\tcontroller.should.not.have.property 'model'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#index()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tcontroller.should.have.property 'index'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#show()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tcontroller.should.have.property 'show'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#edit()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tcontroller.should.have.property 'edit'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#update()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tcontroller.should.have.property 'update'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#remove()', ->\
 \n\t\tit 'should exist', ->\
-\n\t\t\tcontroller.should.have.property 'remove'"
+\n\t\t\tcontroller.should.have.property 'remove'\
+\n\t\t\treturn"
 
 MODEL_JS = "var $(NAME) = exports = module.exports = function $(NAME)() {\
 \n\tvar counter = -1;\
@@ -561,18 +579,13 @@ MODEL_JS = "var $(NAME) = exports = module.exports = function $(NAME)() {\
 \n\t}\
 \n};"
 
-MODEL_CS = "$(NAME) = exports = module.exports = $(NAME)() ->\
+MODEL_CS = "$(NAME) = exports = module.exports = ->\
 \n\tcounter = -1\
-\n\tindex = 0\
-\n\n\tmethod1() ->\
+\n\n\tindex: 0\
+\n\n\tmethod1: ->\
 \n\t\t'\#method1()'\
-\n\n\tmethod2(text) ->\
-\n\t\ttext\
-\n\n\treturn {\
-\n\t\tindex: index,\
-\n\t\tmethod1: method1,\
-\n\t\tmethod2: method2\
-\n\t}"
+\n\n\tmethod2: (text) ->\
+\n\t\ttext"
 
 TESTMODEL_JS = "describe('$(NAME)', function() {\
 \n\tvar $(NAME) = require('../../$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)');\
@@ -614,21 +627,28 @@ TESTMODEL_CS = "describe '$(NAME)', ->\
 \n\n\tdescribe '\#counter', ->\
 \n\t\tit 'should not exist', ->\
 \n\t\t\tinstance.should.not.have.property 'counter'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#index', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tinstance.should.have.property 'index'\
+\n\t\t\treturn\
 \n\n\t\tit 'should equal 0', ->\
 \n\t\t\tinstance.index.should.eql 0\
+\n\t\t\treturn\
 \n\n\tdescribe '\#method1()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tinstance.should.have.property 'method1'\
+\n\t\t\treturn\
 \n\n\t\tit 'should return a predefined text', ->\
 \n\t\t\tinstance.method1().should.eql '\#method1()'\
+\n\t\t\treturn\
 \n\n\tdescribe '\#method2()', ->\
 \n\t\tit 'should exist', ->\
 \n\t\t\tinstance.should.have.property 'method2'\
+\n\t\t\treturn\
 \n\n\t\tit 'should equal 0', ->\
-\n\t\t\tinstance.method2('text')index.should.eql 'text'"
+\n\t\t\tinstance.method2('text').should.eql 'text'\
+\n\t\t\treturn"
 
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
