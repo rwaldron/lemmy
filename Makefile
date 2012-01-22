@@ -44,6 +44,14 @@ setup:
 	@make git-init
 endif
 
+update:
+	@git clone https://github.com/rock-n-code/lemmy .temp
+	@rm -drf .lemmy
+	@rm Makefile
+	@mv .temp/.lemmy .
+	@mv .temp/Makefile .
+	@rm -drf .temp
+
 mit-license:
 	@echo $(MIT_LICENSE) > LICENSE
 
