@@ -216,12 +216,12 @@ test:
 endif
 
 ifeq "$(APP_LANGUAGE)" "CS"
-deploy:
+prepare:
 	@make build
 	@make dependencies APP_ENVIRONMENT=production
 	@make move_files-to-deployment
 else
-deploy:
+prepare:
 	@make clean
 	@make dependencies APP_ENVIRONMENT=production
 	@make move-files-to-deployment
@@ -230,7 +230,7 @@ endif
 version:
 	@echo "0.2.0"
 
-.PHONY: help clean create update mit-license dependencies module middleware route controller model build watch run test deploy version
+.PHONY: help clean create update mit-license dependencies module middleware route controller model build watch run test prepare version
 
 # Helpers
 
