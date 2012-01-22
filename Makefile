@@ -10,7 +10,7 @@ help:
 
 ifeq "$(APP_LANGUAGE)" "CS"
 clean:
-	@rm -f .log
+	@rm -f *.log
 	@rm -f $(APP_FILE)
 	@rm -drf $(MODULES_DIRECTORY)
 	@rm -drf $(MIDDLEWARES_DIRECTORY)
