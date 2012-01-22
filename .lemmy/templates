@@ -25,6 +25,7 @@ HELPMENU = "\
 \n-> deploy\t\t\tPrepares your Express project for deployment.\
 \n-> mit-license\t\t\tGenerate a MIT license for your Express project.\
 \n-> help\t\t\t\tDisplay the Help menu you're reading right now.\
+\n-> version\t\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
 \n"
 
 GITIGNORE = ".DS_Store\

@@ -68,6 +68,7 @@ The commands __Lemmy__ provides you are:
 * *deploy* : Prepares your Express project for deployment.
 * *mit-license* : Generate a MIT license for your Express project.
 * *help* : Display the Help menu you're reading right now.
+* *version* : Display the version of Lemmy that you've installed on your machine.
 
 ### ToDos
 
