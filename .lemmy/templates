@@ -33,13 +33,17 @@ GITIGNORE = ".DS_Store\
 \nMakefile\
 \n*.log\
 \n.lemmy/\
-\nnode_modules/\
-\ndeploy/"
+\n$(UPDATE_DIRECTORY)/\
+\n$(DEPENDENCIES_DIRECTORY)/\
+\n$(DEPLOYMENT_DIRECTORY)/"
 
 ifeq "$(APP_LANGUAGE)" "CS"
 GITIGNORE += "\nlib/\
-\nmodules/\
-\ntest/"
+\n$(MODULES_DIRECTORY)/\
+\n$(MIDDLEWARES_DIRECTORY)/\
+\n$(ROUTES_DIRECTORY)/\
+\n$(CONTROLLERS_DIRECTORY)/\
+\n$(MODELS_DIRECTORY)/"
 endif
 
 MODULE_JS = "module.exports = {\
