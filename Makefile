@@ -49,9 +49,11 @@ mit-license:
 
 ifeq "$(APP_ENVIRONMENT)" "production"
 dependencies:
+	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then rm -drf $(DEPENDENCIES_DIRECTORY); fi
 	@npm install --production
 else
 dependencies:
+	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then rm -drf $(DEPENDENCIES_DIRECTORY); fi
 	@npm install
 endif
 
@@ -209,7 +211,6 @@ endif
 ifeq "$(APP_LANGUAGE)" "CS"
 deploy:
 	@make build
-	@rm -drf $(DEPENDENCIES_DIRECTORY)
 	@make dependencies APP_ENVIRONMENT=production
 	@make move_files-to-deployment
 else
@@ -240,4 +241,3 @@ move-files-to-deployment:
 	@if [ -d "$(CONTROLLERS_DIRECTORY)" ]; then cp -r $(CONTROLLERS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(MODELS_DIRECTORY)" ]; then cp -r $(MODELS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-
