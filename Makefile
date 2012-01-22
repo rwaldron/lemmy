@@ -77,14 +77,12 @@ module:
 	@echo $(MODULE_CS) > $(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
 	@echo $(TESTMODULE_CS) > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
-	@echo "The module '$(NAME)' had been generated in your project."
 else
 module:
 	@mkdir -p $(MODULES_DIRECTORY)
 	@echo $(MODULE_JS) > $(MODULES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)
 	@echo $(TESTMODULE_JS) > $(TESTING_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
-	@echo "The module '$(NAME)' had been generated in your project."
 endif
 endif
 
@@ -99,14 +97,12 @@ middleware:
 	@echo $(MIDDLEWARE_CS)  > $(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
 	@echo $(TESTMIDDLEWARE_CS) > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
-	@echo "The middleware '$(NAME)' had been generated in your project."
 else
 middleware:
 	@mkdir -p $(MIDDLEWARES_DIRECTORY)
 	@echo $(MIDDLEWARE_JS) > $(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)
 	@echo $(TESTMIDDLEWARE_JS) > $(TESTING_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
-	@echo "The middleware '$(NAME)' had been generated in your project."
 endif
 endif
 
@@ -121,14 +117,12 @@ route:
 	@echo $(ROUTE_CS) > $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
 	@echo $(TESTROUTE_CS) > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
-	@echo "The route container '$(NAME)' had been generated in your project."
 else
 route:
 	@mkdir -p $(ROUTES_DIRECTORY)
 	@echo $(ROUTE_JS) > $(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
 	@echo $(TESTROUTE_JS) > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
-	@echo "The route container '$(NAME)' had been generated in your project."
 endif
 endif
 
@@ -143,14 +137,12 @@ controller:
 	@echo $(CONTROLLER_CS) > $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
 	@echo $(TESTCONTROLLER_CS) > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
-	@echo "The controller '$(NAME)' had been generated in your project."
 else
 controller:
 	@mkdir -p $(CONTROLLERS_DIRECTORY)
 	@echo $(CONTROLLER_JS) > $(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
 	@echo $(TESTCONTROLLER_JS) > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
-	@echo "The controller '$(NAME)' had been generated in your project."
 endif
 endif
 
@@ -165,14 +157,12 @@ model:
 	@echo $(MODEL_CS) > $(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED).coffee
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
 	@echo $(TESTMODEL_CS) > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee
-	@echo "The model '$(NAME)' had been generated in your project."
 else
 model:
 	@mkdir -p $(MODELS_DIRECTORY)
 	@echo $(MODEL_JS) > $(MODELS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)
 	@echo $(TESTMODEL_JS) > $(TESTING_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
-	@echo "The model '$(NAME)' had been generated in your project."
 endif
 endif
 
@@ -256,4 +246,3 @@ update-files-to-latest:
 	@mv $(UPDATE_DIRECTORY)/.lemmy .
 	@mv $(UPDATE_DIRECTORY)/Makefile .
 	@rm -drf .temp
-	
