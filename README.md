@@ -76,6 +76,7 @@ The commands __Lemmy__ provides you are:
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
+* Implement the *app* generation command.
 * Implement the *view* generation command.
 * Integrate [HTML5 boilerplate][10] on the general layout generation.
 
