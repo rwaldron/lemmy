@@ -1,4 +1,4 @@
-## LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha project Boilerplate
+## LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha boilerplate
 
 No better yet humble hommage to the Godfather of Heavy Metal, __[Lemmy Kilmister][0]__. 
 Perhaps you may have heard of him as the trust-worthy roadie of *[Jimi
@@ -15,7 +15,7 @@ Designed from scratch to kick-start your *[Express][4]* application in
 either *Javascript* or *[Coffee-Script][5]* in no time and agilize the 
 management of the most common tasks during the development, testing, and
 deployment of your project by just using Makefile and a couple of Bash commands
-available on your Linux or OSX system.
+available on your Linux/OSX system.
 
 ### Pre-Requisites
 
@@ -66,7 +66,7 @@ The commands __Lemmy__ provides you are:
 * *watch* : Watches any change on your CS code and automatically compiles it into its JS equivalent.
 * *run* : Run your project on Node.JS
 * *test* : Test your Express project using Mocha.
-* *deploy* : Prepares your Express project for deployment.
+* *prepare* : Prepares your Express project for deployment.
 * *mit-license* : Generate a MIT license for your Express project.
 * *help* : Display the Help menu you're reading right now.
 * *version* : Display the version of Lemmy that you've installed on your machine.
@@ -76,7 +76,6 @@ The commands __Lemmy__ provides you are:
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
-* Improve the *module*, *middleware*, *route*, *controller*, and *model* generation commands.
 * Implement the *view* generation command.
 * Integrate [HTML5 boilerplate][10] on the general layout generation.
 
@@ -94,7 +93,7 @@ added to this list by default.
 
 ### MIT License
 
-Copyright (c) 2011-2012 __Javier Cicchelli__ (javier@rock-n-code.com)
+Copyright (c) 2011-2012 Javier Cicchelli &lt;javier@rock-n-code.com&gt;
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this 
 software and associated documentation files (the 'Software'), to deal in the Software 

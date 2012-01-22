@@ -23,10 +23,10 @@ HELPMENU = "\
 \n-> watch\t\t\tWatches any change on your CS code and automatically compiles it into its JS equivalent.\
 \n-> run\t\t\t\tRun your project on Node.JS\
 \n-> test\t\t\t\tTest your Express project using Mocha.\
-\n-> deploy\t\t\tPrepares your Express project for deployment.\
+\n-> prepare\t\t\tPrepares your Express project for deployment.\
 \n-> mit-license\t\t\tGenerate a MIT license for your Express project.\
 \n-> help\t\t\t\tDisplay the Help menu you're reading right now.\
-\n-> version\t\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
+\n-> version\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
 \n"
 
 GITIGNORE = ".DS_Store\
