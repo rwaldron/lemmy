@@ -44,13 +44,14 @@ setup:
 	@make git-init
 endif
 
+ifeq "$(APP_LANGUAGE)" "CS"
 update:
-	@git clone https://github.com/rock-n-code/lemmy .temp
-	@rm -drf .lemmy
-	@rm Makefile
-	@mv .temp/.lemmy .
-	@mv .temp/Makefile .
-	@rm -drf .temp
+	@make update-files-to-latest
+	@echo "APP_LANGUAGE = CS" > .lemmy/setup
+else
+update:
+	@make update-files-to-latest
+endif
 
 mit-license:
 	@echo $(MIT_LICENSE) > LICENSE
@@ -231,7 +232,7 @@ endif
 version:
 	@echo "0.2.0"
 
-.PHONY: help clean create mit-license dependencies module middleware route controller model build watch run test deploy version
+.PHONY: help clean create update mit-license dependencies module middleware route controller model build watch run test deploy version
 
 # Helpers
 
@@ -249,3 +250,12 @@ move-files-to-deployment:
 	@if [ -d "$(CONTROLLERS_DIRECTORY)" ]; then cp -r $(CONTROLLERS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(MODELS_DIRECTORY)" ]; then cp -r $(MODELS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
+
+update-files-to-latest:
+	@git clone https://github.com/rock-n-code/lemmy $(UPDATE_DIRECTORY)
+	@rm -drf .lemmy
+	@rm Makefile
+	@mv $(UPDATE_DIRECTORY)/.lemmy .
+	@mv $(UPDATE_DIRECTORY)/Makefile .
+	@rm -drf .temp
+	
