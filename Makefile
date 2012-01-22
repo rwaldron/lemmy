@@ -202,7 +202,6 @@ test:
 		--ui $(TEST_INTERFACE) \
 		--slow $(TEST_THRESHOLD) \
 		--colors \
-		--watch \
 		$(TEST_FILES_CS)
 else
 test:
