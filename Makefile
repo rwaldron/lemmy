@@ -28,9 +28,9 @@ ifeq "$(APP_LANGUAGE)" "CS"
 setup:
 	@rm -drf .git
 	@rm README.md LICENSE .gitignore
+	@echo "APP_LANGUAGE = CS" >> .lemmy/setup
 	@mkdir -p $(SOURCE_DIRECTORY)
 	@echo $(APP_CS) > $(SOURCE_DIRECTORY)/app.coffee
-	@echo "APP_LANGUAGE = CS" > .lemmy/setup
 	@echo $(PACKAGE) > package.json
 	@echo $(GITIGNORE) > .gitignore
 	@make git-init
