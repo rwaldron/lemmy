@@ -694,7 +694,7 @@ TESTSUBAPP_JS = "describe('$(NAME)', function() {\
 \n});"
 
 TESTSUBAPP_CS = "describe '$(NAME)', ->\
-\n\t$(NAME_CAMELIZED) = require '../../../$(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app'\
+\n\t$(NAME_CAMELIZED) = require '../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app'\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
 \n\n\tapp.use '/$(NAME_CAMELIZED)', $(NAME_CAMELIZED)\
