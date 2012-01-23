@@ -67,6 +67,26 @@ dependencies:
 endif
 
 ifeq "$(NAME)" ""
+app:
+	@echo "ERROR: You're required to give the NAME argument to the 'app' task to create a new app in your project."
+	@echo "SYNTAX: make app NAME=AppName"
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+app:
+	@mkdir -p $(APPS_DIRECTORY)/$(NAME_CAMELIZED)
+	@echo $(SUBAPP_CS) > $(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app.coffee
+	@mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(NAME_CAMELIZED)
+	@echo $(TESTSUBAPP_CS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app-test.coffee
+else
+app:
+	@mkdir -p $(APPS_DIRECTORY)/$(NAME_CAMELIZED)
+	@echo $(SUBAPP_JS) > $(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app.js
+	@mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(NAME_CAMELIZED)
+	@echo $(TESTSUBAPP_JS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app-test.js
+endif
+endif
+
+ifeq "$(NAME)" ""
 module:
 	@echo "ERROR: You're required to give the NAME argument to the 'module' task to create a new module in your project."
 	@echo "SYNTAX: make module NAME=ModuleName"
