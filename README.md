@@ -57,6 +57,7 @@ The commands __Lemmy__ provides you are:
 * *clean* : Clean-up all the generated code from your Express project.
 * *update* : Update all the Lemmy files on your project.
 * *dependencies* : Install locally all the dependencies defined on the package JSON file.
+* *app* : Generate a new Application file and its respective Test file into your project. 
 * *module* : Generate a new Module file and its respective Test file into your project.
 * *middleware* : Generate a new Middleware file and its respective Test file into your project.
 * *route* : Generate a new Route Container file and its respective Test file into your project.

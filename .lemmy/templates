@@ -14,6 +14,7 @@ HELPMENU = "\
 \n-> clean\t\t\tClean-up all the generated code from your Express project.\
 \n-> update\t\t\tUpdate all the Lemmy files on your project.\
 \n-> dependencies\t\t\tInstall locally all the dependencies defined on the package JSON file.\
+\n-> app NAME=App\t\t\tGenerate a new Application file and its respective Test file into your project.\
 \n-> module NAME=Module\t\tGenerate a new Module file and its respective Test file into your project.\
 \n-> middleware NAME=Middleware\tGenerate a new Middleware file and its respective Test file into your project.\
 \n-> route NAME=Route\t\tGenerate a new Route Container file and its respective Test file into your project.\
