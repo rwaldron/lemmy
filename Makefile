@@ -155,24 +155,25 @@ endif
 else
 ifeq "$(APP_LANGUAGE)" "CS"
 middleware:
-	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; then
-		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY);
-		echo $(MODULE_CS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).coffee;
-		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY);
-		echo $(TESTMODULE_CS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee;
-	else
-		echo "ERROR: You're required to give an existing APP argument to the 'middleware' task to create a new module inside your application."; \
+	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
+	then \
+		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY); \
+		echo $(MIDDLEWARE_CS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).coffee; \
+		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY); \
+		echo $(TESTMIDDLEWARE_CS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee; \
+	else \
+		echo "ERROR: You're required to give an existing APP argument to the 'middleware' task to create a new middleware inside your application."; \
 	fi
 else
 middleware:
 	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
 	then \
 		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY); \
-		echo $(MODULE_JS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).js; \
+		echo $(MIDDLEWARE_JS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED).js; \
 		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY); \
-		echo $(TESTMODULE_JS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js; \
+		echo $(TESTMIDDLEWARE_JS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)-test.js; \
 	else \
-		echo "ERROR: You're required to give an existing APP argument to the 'middleware' task to create a new module inside your application."; \
+		echo "ERROR: You're required to give an existing APP argument to the 'middleware' task to create a new middleware inside your application."; \
 	fi
 endif
 endif
