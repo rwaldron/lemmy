@@ -508,7 +508,7 @@ TESTROUTE_CS += "\n\n\tapp.listen 3000\
 \n\t\t\t\treturn"
 
 CONTROLLER_JS = "//var Example = require('example');\
-\n\nvar $(NAME) = exports = module.exports = function $(NAME) {\
+\n\nvar $(NAME) = exports = module.exports = function() {\
 \n\t//var model = new Example();\
 \n\n\tfunction index(request, response) {\
 \n\t\t// ... your code goes in here ...\
