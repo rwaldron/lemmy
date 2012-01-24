@@ -214,11 +214,19 @@ ROUTE_CS = "\#example = require 'example'\
 \n\n\tapp.del '/$(NAME_CAMELIZED)', (request, response, next) ->\
 \n\t\t\# ... your code goes in here ..."
 
+ifeq "$(APP)" ""
 TESTROUTE_JS = "describe('$(NAME)', function(){\
 \n\tvar app = require('express').createServer();\
 \n\tvar http = require('http');\
-\n\n\trequire('../../$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app);\
-\n\n\tapp.listen(3000);\
+\n\n\trequire('../../$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app);"
+else
+TESTROUTE_JS = "describe('$(APP) > $(NAME)', function(){\
+\n\tvar app = require('express').createServer();\
+\n\tvar http = require('http');\
+\n\n\trequire('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app);"
+endif
+
+TESTROUTE_JS += "\n\n\tapp.listen(3000);\
 \n\n\tdescribe('\#get()', function(){\
 \n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function(){\
 \n\t\t\tvar options = {\
@@ -361,11 +369,19 @@ TESTROUTE_JS = "describe('$(NAME)', function(){\
 \n\t});\
 \n});"
 
+ifeq "$(APP)" ""
 TESTROUTE_CS = "describe '$(NAME)', ->\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
-\n\n\trequire('../../$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)\
-\n\n\tapp.listen 3000\
+\n\n\trequire('../../$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)"
+else
+TESTROUTE_CS = "describe '$(APP) > $(NAME)', ->\
+\n\tapp = require('express').createServer()\
+\n\thttp = require 'http'\
+\n\n\trequire('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)"
+endif
+
+TESTROUTE_CS += "\n\n\tapp.listen 3000\
 \n\n\tdescribe '\#get()', ->\
 \n\t\tit '\'/$(NAME_CAMELIZED)\' route should exist', ->\
 \n\t\t\toptions = {\
