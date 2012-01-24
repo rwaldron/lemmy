@@ -230,6 +230,7 @@ controller:
 	@echo "ERROR: You're required to give the NAME argument to the 'controller' task to create a new controller in your project."
 	@echo "SYNTAX: make controller NAME=ControllerName"
 else
+ifeq "$(APP)" ""
 ifeq "$(APP_LANGUAGE)" "CS"
 controller:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
@@ -242,6 +243,31 @@ controller:
 	@echo $(CONTROLLER_JS) > $(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)
 	@echo $(TESTCONTROLLER_JS) > $(TESTING_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.js
+endif
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+controller:
+	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
+	then \
+		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY); \
+		echo $(ROUTE_CS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).coffee; \
+		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY); \
+		echo $(TESTROUTE_CS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee; \
+	else \
+		echo "ERROR: You're required to give an existing APP argument to the 'controller' task to create a new controller inside your application."; \
+	fi
+else
+controller:
+	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
+	then \
+		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY); \
+		echo $(ROUTE_JS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED).js; \
+		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY); \
+		echo $(TESTROUTE_JS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)-test.js; \
+	else \
+		echo "ERROR: You're required to give an existing APP argument to the 'controller' task to create a new controller inside your application."; \
+	fi
+endif
 endif
 endif
 
