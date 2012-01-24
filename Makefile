@@ -184,6 +184,7 @@ route:
 	@echo "ERROR: You're required to give the NAME argument to the 'route' task to create a new route container in your project."
 	@echo "SYNTAX: make route NAME=RouteContainerName"
 else
+ifeq "$(APP)" ""
 ifeq "$(APP_LANGUAGE)" "CS"
 route:
 	@mkdir -p $(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)
@@ -196,6 +197,31 @@ route:
 	@echo $(ROUTE_JS) > $(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).js
 	@mkdir -p $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)
 	@echo $(TESTROUTE_JS) > $(TESTING_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js
+endif
+else
+ifeq "$(APP_LANGUAGE)" "CS"
+route:
+	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
+	then \
+		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY); \
+		echo $(ROUTE_CS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).coffee; \
+		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY); \
+		echo $(TESTROUTE_CS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.coffee; \
+	else \
+		echo "ERROR: You're required to give an existing APP argument to the 'route' task to create a new route inside your application."; \
+	fi
+else
+route:
+	@if [ -d "$(APPS_DIRECTORY)/$(APP_CAMELIZED)" ]; \
+	then \
+		mkdir -p $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY); \
+		echo $(ROUTE_JS) > $(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED).js; \
+		mkdir -p $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY); \
+		echo $(TESTROUTE_JS) > $(TESTING_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)-test.js; \
+	else \
+		echo "ERROR: You're required to give an existing APP argument to the 'middleware' task to create a new route inside your application."; \
+	fi
+endif
 endif
 endif
 
@@ -266,6 +292,7 @@ test:
 		--ui $(TEST_INTERFACE) \
 		--slow $(TEST_THRESHOLD) \
 		--colors \
+		--watch \
 		$(TEST_FILES_CS)
 else
 test:
