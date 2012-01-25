@@ -93,10 +93,10 @@ TESTMODULE_JS += "\n\n\tdescribe('\#example', function() {\
 
 ifeq "$(APP)" ""
 TESTMODULE_CS = "describe '$(NAME)', ->\
-\n\tvar $(NAME_CAMELIZED) = require '../../$(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'"
+\n\t$(NAME_CAMELIZED) = require '../../$(SOURCE_DIRECTORY)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'"
 else
 TESTMODULE_CS = "describe '$(APP) > $(NAME)', ->\
-\n\tvar $(NAME_CAMELIZED) = require '../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'"
+\n\t$(NAME_CAMELIZED) = require '../../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)'"
 endif
 
 TESTMODULE_CS += "\n\n\tdescribe '\#example', ->\
@@ -160,7 +160,7 @@ TESTMIDDLEWARE_CS = "describe '$(NAME)', ->\
 \n\t$(NAME_FUNCTIONALIZED) = require '../../$(SOURCE_DIRECTORY)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'"
 else
 TESTMIDDLEWARE_CS = "describe '$(APP) > $(NAME)', ->\
-\n\t$(NAME_FUNCTIONALIZED) = require '../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'"
+\n\t$(NAME_FUNCTIONALIZED) = require '../../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)'"
 endif
 
 TESTMIDDLEWARE_CS += "\n\tapp = require('express').createServer()\
@@ -378,7 +378,7 @@ else
 TESTROUTE_CS = "describe '$(APP) > $(NAME)', ->\
 \n\tapp = require('express').createServer()\
 \n\thttp = require 'http'\
-\n\n\trequire('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)"
+\n\n\trequire('../../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app)"
 endif
 
 TESTROUTE_CS += "\n\n\tapp.listen 3000\
@@ -594,7 +594,7 @@ TESTCONTROLLER_CS = "describe '$(NAME)', ->\
 \n\t$(NAME) = require '../../$(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'"
 else
 TESTCONTROLLER_CS = "describe '$(APP) > $(NAME)', ->\
-\n\t$(NAME) = require '../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'"
+\n\t$(NAME) = require '../../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)//$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)'"
 endif
 
 TESTCONTROLLER_CS += "\n\tcontroller = new $(NAME)()\
@@ -692,10 +692,10 @@ TESTMODEL_CS = "describe '$(NAME)', ->\
 \n\t$(NAME) = require '../../$(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)'"
 else
 TESTMODEL_CS = "describe '$(APP) > $(NAME)', ->\
-\n\t$(NAME) = require '../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(SOURCE_DIRECTORY)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)'"
+\n\t$(NAME) = require '../../../../$(SOURCE_DIRECTORY)/$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)'"
 endif
 
-TESTMODEL_CS = "\n\tinstance = new $(NAME)()\
+TESTMODEL_CS += "\n\tinstance = new $(NAME)()\
 \n\n\tdescribe '\#counter', ->\
 \n\t\tit 'should not exist', ->\
 \n\t\t\tinstance.should.not.have.property 'counter'\
