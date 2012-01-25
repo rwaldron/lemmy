@@ -370,7 +370,7 @@ prepare:
 endif
 
 version:
-	@echo "0.2.0"
+	@echo "0.3.0"
 
 .PHONY: help clean create update mit-license dependencies module middleware route controller model build watch run test prepare version
 
