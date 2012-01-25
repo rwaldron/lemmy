@@ -182,7 +182,7 @@ endif
 ifeq "$(NAME)" ""
 route:
 	@echo "ERROR: You're required to give the NAME argument to the 'route' task to create a new route container in your project."
-	@echo "SYNTAX: make route NAME=RouteContainerName"
+	@echo "SYNTAX: make route NAME=RouteContainerName [APP=AppName]"
 else
 ifeq "$(APP)" ""
 ifeq "$(APP_LANGUAGE)" "CS"
@@ -228,7 +228,7 @@ endif
 ifeq "$(NAME)" ""
 controller:
 	@echo "ERROR: You're required to give the NAME argument to the 'controller' task to create a new controller in your project."
-	@echo "SYNTAX: make controller NAME=ControllerName"
+	@echo "SYNTAX: make controller NAME=ControllerName [APP=AppName]"
 else
 ifeq "$(APP)" ""
 ifeq "$(APP_LANGUAGE)" "CS"
@@ -274,7 +274,7 @@ endif
 ifeq "$(NAME)" ""
 model:
 	@echo "ERROR: You're required to give the NAME argument to the 'model' task to create a new model in your project."
-	@echo "SYNTAX: make model NAME=ModelName"
+	@echo "SYNTAX: make model NAME=ModelName [APP=AppName]"
 else
 ifeq "$(APP)" ""
 ifeq "$(APP_LANGUAGE)" "CS"
