@@ -12,24 +12,24 @@ HELPMENU = "\
 \n| LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha Boilerplate. |\
 \n---------------------------------------------------------------------------------\
 \n\nList of Commands you're able to use:\
-\n\n-> setup [APP_LANGUAGE=CS]\tKick-start your JS/CS Express project for once and for all (JS is default).\
-\n-> clean\t\t\tClean-up all the generated code from your Express project.\
-\n-> update\t\t\tUpdate all the Lemmy files on your project.\
-\n-> dependencies\t\t\tInstall locally all the dependencies defined on the package JSON file.\
-\n-> app NAME=App\t\t\tGenerate a new Application file and its respective Test file into your project.\
-\n-> module NAME=Module\t\tGenerate a new Module file and its respective Test file into your project.\
-\n-> middleware NAME=Middleware\tGenerate a new Middleware file and its respective Test file into your project.\
-\n-> route NAME=Route\t\tGenerate a new Route Container file and its respective Test file into your project.\
-\n-> controller NAME=Controller\tGenerate a new Controller file and its respective Test file into your project.\
-\n-> model NAME=Model\t\tGenerate a new Model file and its respective Test file into your project.\
-\n-> build\t\t\tCompiles your CS code into the JS equivalent.\
-\n-> watch\t\t\tWatches any change on your CS code and automatically compiles it into its JS equivalent.\
-\n-> run\t\t\t\tRun your project on Node.JS\
-\n-> test\t\t\t\tTest your Express project using Mocha.\
-\n-> prepare\t\t\tPrepares your Express project for deployment.\
-\n-> mit-license\t\t\tGenerate a MIT license for your Express project.\
-\n-> help\t\t\t\tDisplay the Help menu you're reading right now.\
-\n-> version\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
+\n\n-> setup [APP_LANGUAGE=CS]\t\tKick-start your JS/CS Express project for once and for all (JS is default).\
+\n-> clean\t\t\t\tClean-up all the generated code from your Express project.\
+\n-> update\t\t\t\tUpdate all the Lemmy files on your project.\
+\n-> dependencies\t\t\t\tInstall locally all the dependencies defined on the package JSON file.\
+\n-> app NAME=App\t\t\t\tGenerate a new Application file and its respective Test file into your project.\
+\n-> module NAME=Module [APP=App]\t\tGenerate a new Module file and its respective Test file into your project.\
+\n-> middleware NAME=Middleware [APP=App]\tGenerate a new Middleware file and its respective Test file into your project.\
+\n-> route NAME=Route [APP=App]\t\tGenerate a new Route Container file and its respective Test file into your project.\
+\n-> controller NAME=Controller [APP=App]\tGenerate a new Controller file and its respective Test file into your project.\
+\n-> model NAME=Model [APP=App]\t\tGenerate a new Model file and its respective Test file into your project.\
+\n-> build\t\t\t\tCompiles your CS code into the JS equivalent.\
+\n-> watch\t\t\t\tWatches any change on your CS code and automatically compiles it into its JS equivalent.\
+\n-> run\t\t\t\t\tRun your project on Node.JS\
+\n-> test\t\t\t\t\tTest your Express project using Mocha.\
+\n-> prepare\t\t\t\tPrepares your Express project for deployment.\
+\n-> mit-license\t\t\t\tGenerate a MIT license for your Express project.\
+\n-> help\t\t\t\t\tDisplay the Help menu you're reading right now.\
+\n-> version\t\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
 \n"
 
 GITIGNORE = ".DS_Store\
