@@ -822,6 +822,7 @@ PACKAGE = '{\
 \n\t"author": "$(APP_AUTHOR) <$(APP_EMAIL)>",\
 \n\t"homepage": "$(APP_URL)",\
 \n\t"keywords": [],\
+\n\t"private": true,\
 \n\t"main": "./app.js",\
 \n\t"engines": {\
 \n\t\t"node": ">= 0.4.0 < 0.7.0"\
@@ -833,7 +834,8 @@ PACKAGE = '{\
 \n\t\t"test": "./test"\
 \n\t},\
 \n\t"dependencies": {\
-\n\t\t"express": ">= 2.5.2"\
+\n\t\t"express": ">= 2.5.2",\
+\n\t\t"ejs": ">= 0.6.1"\
 \n\t},\
 \n\t"devDependencies": {\
 \n\t\t"mocha": ">= 0.5.0",\
