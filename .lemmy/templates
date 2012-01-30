@@ -827,6 +827,74 @@ APP_CS = "express = require 'express'\
 \n\treturn\
 \n\napp.listen 3000"
 
+EJS_LAYOUT = '<!doctype html>\
+\n<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->\
+\n<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->\
+\n<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->\
+\n<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->\
+\n<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->\
+\n\t<head>\
+\n\t\t<meta charset="utf-8">\
+\n\t\t<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">\
+\n\t\t<title></title>\
+\n\t\t<meta name="description" content="">\
+\n\t\t<meta name="viewport" content="width=device-width,initial-scale=1">\
+\n\t\t<link rel="stylesheet" href="css/style.css">\
+\n\t\t<script src="js/modernizr.js"></script>\
+\n\t</head>\
+\n\t<body>\
+\n\t\t<header>\
+\n\t\t</header>\
+\n\t\t<div role="main">\
+\n\t\t\t<%- body %>\
+\n\t\t</div>\
+\n\t\t<footer>\
+\n\t\t</footer>\
+\n\t\t<script src="js/jquery.js"></script>\
+\n\t\t<script defer src="js/plugins.js"></script>\
+\n\t\t<script defer src="js/script.js"></script>\
+\n\t\t<script>\
+\n\t\t\tvar _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];\
+\n\t\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];\
+\n\t\t\tg.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";\
+\n\t\t\ts.parentNode.insertBefore(g,s)}(document,"script"));\
+\n\t\t</script>\
+\n\t</body>\
+\n</html>'
+
+EJS_404 = "<!doctype html>\
+\n<html lang="en">\
+\n\t<head>\
+\n\t\t<meta charset="utf-8">\
+\n\t\t<title>Page Not Found :(</title>\
+\n\t</head>\
+\n\t<body>\
+\n\t\t<div class="container">\
+\n\t\t\t<h1>Not found <span>:(</span></h1>\
+\n\t\t\t<p>Sorry, but the page you were trying to view does not exist.</p>\
+\n\t\t\t<p>It looks like this was the result of either:</p>\
+\n\t\t\t<ul>\
+\n\t\t\t\t<li>a mistyped address</li>\
+\n\t\t\t\t<li>an out-of-date link</li>\
+\n\t\t\t</ul>\
+\n\t\t</div>\
+\n\t</body>\
+\n</html>"
+
+EJS_500 = "<!doctype html>\
+\n<html lang="en">\
+\n\t<head>\
+\n\t\t<meta charset="utf-8">\
+\n\t\t<title>Internal Server Error :(</title>\
+\n\t</head>\
+\n\t<body>\
+\n\t\t<div class="container">\
+\n\t\t\t<h1>Internal Server Error <span>:(</span></h1>\
+\n\t\t\t<p>Sorry, but the Web Server encountered an condition that prevented it from fulfilling your request for access to the requested URL.</p>\
+\n\t\t</div>\
+\n\t</body>\
+\n</html>"
+
 PACKAGE = '{\
 \n\t"name": "$(APP_NAME)",\
 \n\t"description": "Project description goes here...",\
