@@ -20,7 +20,7 @@ available on your Linux/OSX system.
 ### Pre-Requisites
 
 You're required to use a BSD-like system that support Makefiles, uses
-[Bash shell][6], have [Git source code management system][7] and [Node.JS][8] installed 
+[Bash shell][6], have [Git source code management system][7] and [Node.js][8] installed 
 on your machine. That's all you need!
 
 ### How to Use
@@ -57,6 +57,7 @@ The commands __Lemmy__ provides you are:
 * *clean* : Clean-up all the generated code from your Express project.
 * *update* : Update all the Lemmy files on your project.
 * *dependencies* : Install locally all the dependencies defined on the package JSON file.
+* *layout* : Generate the layout and respective assets into your project.
 * *app* : Generate a new Application file and its respective Test file into your project. 
 * *module* : Generate a new Module file and its respective Test file into your project.
 * *middleware* : Generate a new Middleware file and its respective Test file into your project.

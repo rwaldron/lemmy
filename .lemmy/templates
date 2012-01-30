@@ -16,6 +16,7 @@ HELPMENU = "\
 \n-> clean\t\t\t\tClean-up all the generated code from your Express project.\
 \n-> update\t\t\t\tUpdate all the Lemmy files on your project.\
 \n-> dependencies\t\t\t\tInstall locally all the dependencies defined on the package JSON file.\
+\n-> layout\t\t\t\tGenerate the layout and respective assets into your project.\
 \n-> app NAME=App\t\t\t\tGenerate a new Application file and its respective Test file into your project.\
 \n-> module NAME=Module [APP=App]\t\tGenerate a new Module file and its respective Test file into your project.\
 \n-> middleware NAME=Middleware [APP=App]\tGenerate a new Middleware file and its respective Test file into your project.\
@@ -828,7 +829,6 @@ APP_CS = "express = require 'express'\
 \n\napp.listen 3000"
 
 EJS_LAYOUT = '<!doctype html>\
-\n<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->\
 \n<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->\
 \n<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->\
 \n<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->\
