@@ -393,9 +393,9 @@ move-files-to-deployment:
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 
 update-files-to-latest:
-	@git clone https://github.com/rock-n-code/lemmy $(UPDATE_DIRECTORY)
+	@git clone https://github.com/rock-n-code/lemmy $(TEMPORARY_DIRECTORY)
 	@rm -drf .lemmy
 	@rm Makefile
-	@mv $(UPDATE_DIRECTORY)/.lemmy .
-	@mv $(UPDATE_DIRECTORY)/Makefile .
-	@rm -drf .temp
+	@mv $(TEMPORARY_DIRECTORY)/.lemmy .
+	@mv $(TEMPORARY_DIRECTORY)/Makefile .
+	@rm -drf $(TEMPORARY_DIRECTORY)
