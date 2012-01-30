@@ -839,9 +839,15 @@ EJS_LAYOUT = '<!doctype html>\
 \n\t\t<title></title>\
 \n\t\t<meta name="description" content="">\
 \n\t\t<meta name="viewport" content="width=device-width,initial-scale=1">\
-\n\t\t<link rel="stylesheet" href="css/style.css">\
-\n\t\t<script src="js/modernizr.js"></script>\
-\n\t</head>\
+\n\t\t<link rel="stylesheet" href="css/style.css">'
+
+ifeq "$(APP)" ""
+EJS_LAYOUT += '\n\t\t<script src="js/modernizr.js"></script>'
+else
+EJS_LAYOUT += '\n\t\t<script src="/js/modernizr.js"></script>'
+endif
+
+EJS_LAYOUT += '\n\t</head>\
 \n\t<body>\
 \n\t\t<header>\
 \n\t\t</header>\
@@ -849,9 +855,15 @@ EJS_LAYOUT = '<!doctype html>\
 \n\t\t\t<%- body %>\
 \n\t\t</div>\
 \n\t\t<footer>\
-\n\t\t</footer>\
-\n\t\t<script src="js/jquery.js"></script>\
-\n\t\t<script defer src="js/plugins.js"></script>\
+\n\t\t</footer>'
+
+ifeq "$(APP)" ""
+EJS_LAYOUT += '\n\t\t<script src="js/jquery.js"></script>'
+else
+EJS_LAYOUT += '\n\t\t<script src="/js/jquery.js"></script>'
+endif
+
+EJS_LAYOUT += '\n\t\t<script defer src="js/plugins.js"></script>\
 \n\t\t<script defer src="js/script.js"></script>\
 \n\t\t<script>\
 \n\t\t\tvar _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];\
