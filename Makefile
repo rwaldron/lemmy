@@ -67,6 +67,25 @@ dependencies:
 	@npm install
 endif
 
+layout:
+	@git clone https://github.com/h5bp/html5-boilerplate.git $(TEMPORARY_DIRECTORY)
+	@mkdir -p $(VIEWS_DIRECTORY)
+	@mkdir -p $(PUBLIC_DIRECTORY)/$(STYLES_DIRECTORY)
+	@mkdir -p $(PUBLIC_DIRECTORY)/$(IMAGES_DIRECTORY)
+	@mkdir -p $(PUBLIC_DIRECTORY)/$(SCRIPTS_DIRECTORY)
+	@echo $(EJS_LAYOUT) > $(VIEWS_DIRECTORY)/layout.ejs
+	@echo $(EJS_404) > $(VIEWS_DIRECTORY)/404.ejs
+	@echo $(EJS_500) > $(VIEWS_DIRECTORY)/500.ejs
+	@mv $(TEMPORARY_DIRECTORY)/*.txt $(PUBLIC_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/*.png $(PUBLIC_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/*.ico $(PUBLIC_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/$(STYLES_DIRECTORY)/*.css $(PUBLIC_DIRECTORY)/$(STYLES_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/$(SCRIPTS_DIRECTORY)/script.js $(PUBLIC_DIRECTORY)/$(SCRIPTS_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/$(SCRIPTS_DIRECTORY)/plugins.js $(PUBLIC_DIRECTORY)/$(SCRIPTS_DIRECTORY)
+	@mv $(TEMPORARY_DIRECTORY)/$(SCRIPTS_DIRECTORY)/libs/jquery-*.min.js $(PUBLIC_DIRECTORY)/$(SCRIPTS_DIRECTORY)/jquery.js
+	@mv $(TEMPORARY_DIRECTORY)/$(SCRIPTS_DIRECTORY)/libs/modernizr-*.min.js $(PUBLIC_DIRECTORY)/$(SCRIPTS_DIRECTORY)/modernizr.js
+	@rm -drf $(TEMPORARY_DIRECTORY)
+
 ifeq "$(NAME)" ""
 app:
 	@echo "ERROR: You're required to give the NAME argument to the 'app' task to create a new app in your project."
@@ -372,7 +391,7 @@ endif
 version:
 	@echo "0.3.0"
 
-.PHONY: help clean create update mit-license dependencies module middleware route controller model build watch run test prepare version
+.PHONY: help clean create update mit-license dependencies layout app module middleware route controller model build watch run test prepare version
 
 # Helpers
 
