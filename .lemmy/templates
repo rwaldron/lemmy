@@ -678,7 +678,7 @@ TESTMODEL_JS += "\n\tvar instance = new $(NAME)();\
 \n\t\t});\
 \n\t});\
 \n\n\tdescribe('\#method2()', function() {\
-\n\t\tit('should exist', function() {\
+\n\t\tit('should exist', function() {\function\
 \n\t\t\tinstance.should.have.property('method2');\
 \n\t\t});\
 \n\t\tit('should return a given text', function() {\
@@ -725,7 +725,10 @@ TESTMODEL_CS += "\n\tinstance = new $(NAME)()\
 SUBAPP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function() {\
+\n\t\\app.set('views', __dirname + '/views');\
+\n\t\\app.set('view engine', 'jade');\
 \n\tapp.use(express.router);\
+\n\t\\app.use(express.static(__dirname + '/public'));\
 \n});\
 \n\napp.get('(/*)?', function(request, response) {\
 \n\t// ... your code goes in here ...\
@@ -734,7 +737,10 @@ SUBAPP_JS = "var express = require('express');\
 SUBAPP_CS = "express = require 'express'\
 \n\napp = express.createServer()\
 \n\napp.configure ->\
+\n\t\#app.set 'views', __dirname + '/views'\
+\n\t\#app.set 'view engine', 'jade'\
 \n\tapp.use(express.router)\
+\n\t\#app.use express.static __dirname + '/public'\
 \n\treturn\
 \n\napp.get '(/*)?', (request, response) ->\
 \n\t\# ... your code goes in here ...\
@@ -780,10 +786,13 @@ TESTSUBAPP_CS = "describe '$(NAME)', ->\
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function() {\
+\n\t\\app.set('views', __dirname + '/views');\
+\n\t\\app.set('view engine', 'jade');\
 \n\tapp.use(express.logger());\
 \n\tapp.use(express.methodOverride());\
 \n\tapp.use(express.bodyParser());\
 \n\tapp.use(express.router);\
+\n\t\\app.use(express.static(__dirname + '/public'));\
 \n});\
 \n\napp.configure('development', function() {\
 \n\tapp.use(express.errorHandler({\
@@ -799,10 +808,13 @@ APP_JS = "var express = require('express');\
 APP_CS = "express = require 'express'\
 \n\napp = express.createServer()\
 \n\napp.configure ->\
+\n\t\#app.set 'views', __dirname + '/views'\
+\n\t\#app.set 'view engine', 'jade'\
 \n\tapp.use express.logger()\
 \n\tapp.use express.methodOverride()\
 \n\tapp.use express.bodyParser()\
 \n\tapp.use express.router\
+\n\t\#app.use express.static __dirname + '/public'\
 \n\treturn\
 \n\napp.configure 'development', ->\
 \n\tapp.use express.errorHandler(\
