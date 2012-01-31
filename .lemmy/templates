@@ -16,8 +16,8 @@ HELPMENU = "\
 \n-> clean\t\t\t\tClean-up all the generated code from your Express project.\
 \n-> update\t\t\t\tUpdate all the Lemmy files on your project.\
 \n-> dependencies\t\t\t\tInstall locally all the dependencies defined on the package JSON file.\
-\n-> layout\t\t\t\tGenerate the layout and respective assets into your project.\
 \n-> app NAME=App\t\t\t\tGenerate a new Application file and its respective Test file into your project.\
+\n-> layout [APP=App]\t\t\tGenerate the layout and respective assets into your project or apps within the project.\
 \n-> module NAME=Module [APP=App]\t\tGenerate a new Module file and its respective Test file into your project.\
 \n-> middleware NAME=Middleware [APP=App]\tGenerate a new Middleware file and its respective Test file into your project.\
 \n-> route NAME=Route [APP=App]\t\tGenerate a new Route Container file and its respective Test file into your project.\

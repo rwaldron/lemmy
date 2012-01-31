@@ -57,8 +57,8 @@ The commands __Lemmy__ provides you are:
 * *clean* : Clean-up all the generated code from your Express project.
 * *update* : Update all the Lemmy files on your project.
 * *dependencies* : Install locally all the dependencies defined on the package JSON file.
-* *layout* : Generate the layout and respective assets into your project.
-* *app* : Generate a new Application file and its respective Test file into your project. 
+* *app* : Generate a new Application file and its respective Test file into your project.
+* *layout* : tGenerate the layout and respective assets into your project or apps within the project.
 * *module* : Generate a new Module file and its respective Test file into your project.
 * *middleware* : Generate a new Middleware file and its respective Test file into your project.
 * *route* : Generate a new Route Container file and its respective Test file into your project.
@@ -79,7 +79,6 @@ This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
 * Implement the *view* generation command.
-* Integrate [HTML5 boilerplate][10] on the general layout generation.
 
 ### Contributors
 
@@ -90,6 +89,21 @@ for every [Express][4] developer:
 
 No matter how small or big your contribution to this project, you'll be
 added to this list by default.
+
+### Thanks
+
+__Lemmy__ relies on the invaluable contribution done by the Open Source 
+community and, in particular, to certain individuals who have kick-started 
+some of the greatest and useful tools ever created for developers:
+
+* Javascript by [Brendan Eich][15]
+* [Makefile][16] by Stuart Feldman
+* [Git][7] by Linus Torvalds
+* [Node.js][8] by [Ryan Dahl][17]
+* [Express][4], [Mocha][13], [EJS][14] by [TJ Holowaychuk][18]
+* [Coffee-Script][5] by [Josh Askhenas][19]
+* [Jitter][12] by [Trevor Burham][20]
+* [HTML5 boilerplate][10] by [Paul Irish][21]
 
 ![Lemmy Kilmister][9]
 
@@ -124,6 +138,15 @@ OTHER DEALINGS IN THE SOFTWARE.
 [7]: http://git-scm.com
 [8]: http://nodejs.org
 [9]: http://30daysout.files.wordpress.com/2010/12/lemmypublicity1robertjohn_20101130_123211.jpg
-[10]: https://github.com/h5bp/html5-boilerplate
+[10]: http://html5boilerplate.com
 [11]: https://github.com/mr-rock
-
+[12]: https://github.com/TrevorBurnham/Jitter
+[13]: http://visionmedia.github.com/mocha
+[14]: https://github.com/visionmedia/ejs
+[15]: http://brendaneich.com
+[16]: http://www.gnu.org/software/make/manual/make.html
+[17]: http://tinyclouds.org
+[18]: http://tjholowaychuk.com
+[19]: https://github.com/jashkenas
+[20]: http://trevorburnham.com
+[21]: http://paulirish.com
