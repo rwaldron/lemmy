@@ -45,14 +45,16 @@ setup:
 	@make git-init
 endif
 
-ifeq "$(APP_LANGUAGE)" "CS"
 update:
-	@make update-files-to-latest
-	@echo "APP_LANGUAGE = CS" > .lemmy/setup
-else
-update:
-	@make update-files-to-latest
-endif
+	@git clone https://github.com/rock-n-code/lemmy $(TEMPORARY_DIRECTORY)
+	@mv .lemmy/setup $(TEMPORARY_DIRECTORY)
+	@rm -drf .lemmy
+	@rm Makefile
+	@mv $(TEMPORARY_DIRECTORY)/.lemmy .
+	@rm .lemmy/setup
+	@mv $(TEMPORARY_DIRECTORY)/setup .lemmy
+	@mv $(TEMPORARY_DIRECTORY)/Makefile .
+	@rm -drf $(TEMPORARY_DIRECTORY)
 
 mit-license:
 	@echo $(MIT_LICENSE) > LICENSE
@@ -434,11 +436,3 @@ move-files-to-deployment:
 	@if [ -d "$(CONTROLLERS_DIRECTORY)" ]; then cp -r $(CONTROLLERS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(MODELS_DIRECTORY)" ]; then cp -r $(MODELS_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
 	@if [ -d "$(DEPENDENCIES_DIRECTORY)" ]; then cp -r $(DEPENDENCIES_DIRECTORY) $(DEPLOYMENT_DIRECTORY); fi
-
-update-files-to-latest:
-	@git clone https://github.com/rock-n-code/lemmy $(TEMPORARY_DIRECTORY)
-	@rm -drf .lemmy
-	@rm Makefile
-	@mv $(TEMPORARY_DIRECTORY)/.lemmy .
-	@mv $(TEMPORARY_DIRECTORY)/Makefile .
-	@rm -drf $(TEMPORARY_DIRECTORY)
