@@ -727,10 +727,10 @@ TESTMODEL_CS += "\n\tinstance = new $(NAME)()\
 SUBAPP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function() {\
-\n\t\\app.set('views', __dirname + '/views');\
-\n\t\\app.set('view engine', 'jade');\
+\n\t//app.set('views', __dirname + '/views');\
+\n\t//app.set('view engine', 'jade');\
 \n\tapp.use(express.router);\
-\n\t\\app.use(express.static(__dirname + '/public'));\
+\n\t//app.use(express.static(__dirname + '/public'));\
 \n});\
 \n\napp.get('(/*)?', function(request, response) {\
 \n\t// ... your code goes in here ...\
