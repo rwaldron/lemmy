@@ -788,13 +788,13 @@ TESTSUBAPP_CS = "describe '$(NAME)', ->\
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
 \n\napp.configure(function() {\
-\n\t\\app.set('views', __dirname + '/views');\
-\n\t\\app.set('view engine', 'jade');\
+\n\t//app.set('views', __dirname + '/views');\
+\n\t//app.set('view engine', 'jade');\
 \n\tapp.use(express.logger());\
 \n\tapp.use(express.methodOverride());\
 \n\tapp.use(express.bodyParser());\
 \n\tapp.use(express.router);\
-\n\t\\app.use(express.static(__dirname + '/public'));\
+\n\t//app.use(express.static(__dirname + '/public'));\
 \n});\
 \n\napp.configure('development', function() {\
 \n\tapp.use(express.errorHandler({\
