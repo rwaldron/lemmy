@@ -33,7 +33,7 @@ setup:
 	@mkdir -p $(SOURCE_DIRECTORY)
 	@echo $(APP_CS) > $(SOURCE_DIRECTORY)/app.coffee
 	@echo $(PACKAGE) > package.json
-	@echo $(GITIGNORE) > .gitignore
+	@echo $(GITIGNORE) | sed 's/ //g' > .gitignore
 	@make git-init
 else
 setup:
@@ -41,7 +41,7 @@ setup:
 	@rm README.md LICENSE .gitignore
 	@echo $(APP_JS) > app.js
 	@echo $(PACKAGE) > package.json
-	@echo $(GITIGNORE) > .gitignore
+	@echo $(GITIGNORE) | sed 's/ //g' > .gitignore
 	@make git-init
 endif
 

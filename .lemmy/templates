@@ -33,21 +33,21 @@ HELPMENU = "\
 \n-> version\t\t\t\tDisplay the version of Lemmy that you've installed on your machine.\
 \n"
 
-GITIGNORE = ".DS_Store"
-GITIGNORE += "\nMakefile"
-GITIGNORE += "\n*.log"
-GITIGNORE += "\n.lemmy/"
-GITIGNORE += "\n$(TEMPORARY_DIRECTORY)/"
-GITIGNORE += "\n$(DEPLOYMENT_DIRECTORY)/"
-GITIGNORE += "\n$(DEPENDENCIES_DIRECTORY)/"
+GITIGNORE = ".DS_Store\
+\nMakefile\
+\n*.log\
+\n.lemmy/\
+\n$(TEMPORARY_DIRECTORY)/\
+\n$(DEPENDENCIES_DIRECTORY)/\
+\n$(DEPLOYMENT_DIRECTORY)/"
 
 ifeq "$(APP_LANGUAGE)" "CS"
-GITIGNORE += "\n$(APPS_DIRECTORY)/"
-GITIGNORE += "\n$(MODULES_DIRECTORY)/"
-GITIGNORE += "\n$(MIDDLEWARES_DIRECTORY)/"
-GITIGNORE += "\n$(ROUTES_DIRECTORY)/"
-GITIGNORE += "\n$(CONTROLLERS_DIRECTORY)/"
-GITIGNORE += "\n$(MODELS_DIRECTORY)/"
+GITIGNORE += "\n$(APPS_DIRECTORY)/\
+\n$(MODULES_DIRECTORY)/\
+\n$(MIDDLEWARES_DIRECTORY)/\
+\n$(ROUTES_DIRECTORY)/\
+\n$(CONTROLLERS_DIRECTORY)/\
+\n$(MODELS_DIRECTORY)/"
 endif
 
 MODULE_JS = "module.exports = {\
