@@ -52,10 +52,10 @@ endif
 
 MODULE_JS = "module.exports = {\
 \n\t//var example = 0;\
-\n\n\tmethod1: function() {\
+\n\n\tmethod1: function(){\
 \n\t\t// ... your code goes in here ...\
 \n\t},\
-\n\tmethod2: function() {\
+\n\tmethod2: function(){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
 \n};"
@@ -69,25 +69,25 @@ MODULE_CS = "module.exports = {\
 \n}"
 
 ifeq "$(APP)" ""
-TESTMODULE_JS = "describe('$(NAME)', function() {\
+TESTMODULE_JS = "describe('$(NAME)', function(){\
 \n\tvar $(NAME_CAMELIZED) = require('../../$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)');"
 else
-TESTMODULE_JS = "describe('$(APP) > $(NAME)', function() {\
+TESTMODULE_JS = "describe('$(APP) > $(NAME)', function(){\
 \n\tvar $(NAME_CAMELIZED) = require('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MODULES_DIRECTORY)/$(NAME_CAMELIZED)');"
 endif
 
-TESTMODULE_JS += "\n\n\tdescribe('\#example', function() {\
-\n\t\tit('should not exist', function() {\
+TESTMODULE_JS += "\n\n\tdescribe('\#example', function(){\
+\n\t\tit('should not exist', function(){\
 \n\t\t\t$(NAME_CAMELIZED).should.not.have.property('example');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#method1()', function() {\
-\n\t\tit('should exist.', function() {\
+\n\n\tdescribe('\#method1()', function(){\
+\n\t\tit('should exist.', function(){\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property('method1');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#method2()', function() {\
-\n\t\tit('should exist.', function() {\
+\n\n\tdescribe('\#method2()', function(){\
+\n\t\tit('should exist.', function(){\
 \n\t\t\t$(NAME_CAMELIZED).should.have.property('method2');\
 \n\t\t});\
 \n\t});\
@@ -129,29 +129,29 @@ MIDDLEWARE_CS = "\#example = require 'example'\
 \n\treturn"
 
 ifeq "$(APP)" ""
-TESTMIDDLEWARE_JS = "describe('$(NAME)', function() {\
+TESTMIDDLEWARE_JS = "describe('$(NAME)', function(){\
 \n\tvar $(NAME_FUNCTIONALIZED) = require('../../$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)');"
 else
-TESTMIDDLEWARE_JS = "describe('$(APP) > $(NAME)', function() {\
+TESTMIDDLEWARE_JS = "describe('$(APP) > $(NAME)', function(){\
 \n\tvar $(NAME_FUNCTIONALIZED) = require('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(MIDDLEWARES_DIRECTORY)/$(NAME_CAMELIZED)');"
 endif
 
 TESTMIDDLEWARE_JS += "\n\tvar app = require('express').createServer();\
 \n\tvar http = require('http');\
-\n\n\tapp.configure(function() {\
+\n\n\tapp.configure(function(){\
 \n\t\tapp.use($(NAME_FUNCTIONALIZED));\
 \n\t});\
-\n\n\tapp.get('/', function(request, response) {\
+\n\n\tapp.get('/', function(request, response){\
 \n\t\tresponse.end();\
 \n\t});\
 \n\n\tapp.listen(3000);\
-\n\n\tit('should exist', function() {\
+\n\n\tit('should exist', function(){\
 \n\t\tvar options = {\
 \n\t\t\thost: 'localhost',\
 \n\t\t\tport : 3000,\
 \n\t\t\tpath: '/'\
 \n\t\t};\
-\n\n\t\thttp.get(options, function(response) {\
+\n\n\t\thttp.get(options, function(response){\
 \n\t\t\tapp.stack[1]['handle'].name.should.eql($(NAME_FUNCTIONALIZED).name);\
 \n\t\t});\
 \n\t});\
@@ -185,20 +185,20 @@ TESTMIDDLEWARE_CS += "\n\tapp = require('express').createServer()\
 \n\t\t\treturn"
 
 ROUTE_JS = "//var example = require('example');\
-\n\nmodule.exports = function(app) {\
-\n\tapp.all('/$(NAME_CAMELIZED)(/*)?', function(request, response, next) {\
+\n\nmodule.exports = function(app){\
+\n\tapp.all('/$(NAME_CAMELIZED)(/*)?', function(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t});\
-\n\tapp.get('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\tapp.get('/$(NAME_CAMELIZED)', function(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t});\
-\n\tapp.post('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\tapp.post('/$(NAME_CAMELIZED)', function(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t});\
-\n\tapp.put('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\tapp.put('/$(NAME_CAMELIZED)', function(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t});\
-\n\tapp.del('/$(NAME_CAMELIZED)', function(request, response, next) {\
+\n\tapp.del('/$(NAME_CAMELIZED)', function(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t});\
 \n};"
@@ -217,66 +217,66 @@ ROUTE_CS = "\#example = require 'example'\
 \n\t\t\# ... your code goes in here ..."
 
 ifeq "$(APP)" ""
-TESTROUTE_JS = "describe('$(NAME)', function() {\
+TESTROUTE_JS = "describe('$(NAME)', function(){\
 \n\tvar app = require('express').createServer();\
 \n\tvar http = require('http');\
 \n\n\trequire('../../$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app);"
 else
-TESTROUTE_JS = "describe('$(APP) > $(NAME)', function() {\
+TESTROUTE_JS = "describe('$(APP) > $(NAME)', function(){\
 \n\tvar app = require('express').createServer();\
 \n\tvar http = require('http');\
 \n\n\trequire('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(ROUTES_DIRECTORY)/$(NAME_CAMELIZED)')(app);"
 endif
 
 TESTROUTE_JS += "\n\n\tapp.listen(3000);\
-\n\n\tdescribe('\#get()', function() {\
-\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function() {\
+\n\n\tdescribe('\#get()', function(){\
+\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/$(NAME_CAMELIZED)',\
 \n\t\t\t\tmethod: 'GET'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function() {\
+\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/$(NAME_CAMELIZED)/xxx/',\
 \n\t\t\t\tmethod: 'GET'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/testing\' route should exist', function() {\
+\n\n\t\tit('\'/testing\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/testing',\
 \n\t\t\t\tmethod: 'GET'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#post()', function() {\
-\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function() {\
+\n\n\tdescribe('\#post()', function(){\
+\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/$(NAME_CAMELIZED)',\
 \n\t\t\t\tmethod: 'POST'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function() {\
+\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
@@ -287,20 +287,20 @@ TESTROUTE_JS += "\n\n\tapp.listen(3000);\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/testing\' route should exist', function() {\
+\n\n\t\tit('\'/testing\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/testing',\
 \n\t\t\t\tmethod: 'POST'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#put()', function() {\
-\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function() {\
+\n\n\tdescribe('\#put()', function(){\
+\n\t\tit('\'/$(NAME_CAMELIZED)\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
@@ -311,14 +311,14 @@ TESTROUTE_JS += "\n\n\tapp.listen(3000);\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function() {\
+\n\n\t\tit('\'/$(NAME_CAMELIZED)/xxx/\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/$(NAME_CAMELIZED)/xxx/',\
 \n\t\t\t\tmethod: 'PUT'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
@@ -357,14 +357,14 @@ TESTROUTE_JS += "\n\n\tapp.listen(3000);\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
-\n\n\t\tit('\'/testing\' route should exist', function() {\
+\n\n\t\tit('\'/testing\' route should exist', function(){\
 \n\t\t\tvar options = {\
 \n\t\t\t\thost: 'localhost',\
 \n\t\t\t\tport: 3000,\
 \n\t\t\t\tpath: '/testing',\
 \n\t\t\t\tmethod: 'DELETE'\
 \n\t\t\t};\
-\n\n\t\t\thttp.request(options, function(response) {\
+\n\n\t\t\thttp.request(options, function(response){\
 \n\t\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t\t});\
 \n\t\t});\
@@ -510,21 +510,21 @@ TESTROUTE_CS += "\n\n\tapp.listen 3000\
 \n\t\t\t\treturn"
 
 CONTROLLER_JS = "//var Example = require('example');\
-\n\nvar $(NAME) = exports = module.exports = function() {\
+\n\nvar $(NAME) = exports = module.exports = function(){\
 \n\t//var model = new Example();\
-\n\n\tfunction index(request, response) {\
+\n\n\tfunction index(request, response){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
-\n\n\tfunction show(request, response, next) {\
+\n\n\tfunction show(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
-\n\n\tfunction edit(request, response, next) {\
+\n\n\tfunction edit(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
-\n\n\tfunction update(request, response, next) {\
+\n\n\tfunction update(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
-\n\n\tfunction remove(request, response, next) {\
+\n\n\tfunction remove(request, response, next){\
 \n\t\t// ... your code goes in here ...\
 \n\t}\
 \n\n\treturn {\
@@ -551,41 +551,41 @@ CONTROLLER_CS = "\#Example = require 'example'\
 \n\t\t\# ... your code goes in here ..."
 
 ifeq "$(APP)" ""
-TESTCONTROLLER_JS = "describe('$(NAME)', function() {\
+TESTCONTROLLER_JS = "describe('$(NAME)', function(){\
 \n\tvar $(NAME) = require('../../$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)');"
 else
-TESTCONTROLLER_JS = "describe('$(APP) > $(NAME)', function() {\
+TESTCONTROLLER_JS = "describe('$(APP) > $(NAME)', function(){\
 \n\tvar $(NAME) = require('../../../../$(APPS_DIRECTORY)/$(APP_CAMELIZED)/$(CONTROLLERS_DIRECTORY)/$(NAME_CAMELIZED)');"
 endif
 
 TESTCONTROLLER_JS += "\n\tvar controller = new $(NAME)();\
-\n\n\tdescribe('\#model', function() {\
-\n\t\tit('should not exist', function() {\
+\n\n\tdescribe('\#model', function(){\
+\n\t\tit('should not exist', function(){\
 \n\t\t\tcontroller.should.not.have.property('model');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#index()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#index()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tcontroller.should.have.property('index');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#show()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#show()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tcontroller.should.have.property('show');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#edit()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#edit()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tcontroller.should.have.property('edit');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#update()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#update()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tcontroller.should.have.property('update');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#remove()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#remove()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tcontroller.should.have.property('remove');\
 \n\t\t});\
 \n\t});\
@@ -625,13 +625,13 @@ TESTCONTROLLER_CS += "\n\tcontroller = new $(NAME)()\
 \n\t\t\tcontroller.should.have.property 'remove'\
 \n\t\t\treturn"
 
-MODEL_JS = "var $(NAME) = exports = module.exports = function $(NAME)() {\
+MODEL_JS = "var $(NAME) = exports = module.exports = function $(NAME)(){\
 \n\tvar counter = -1;\
 \n\tvar index = 0;\
-\n\n\tfunction method1() {\
+\n\n\tfunction method1(){\
 \n\t\treturn '\#method1()';\
 \n\t}\
-\n\n\tfunction method2(text) {\
+\n\n\tfunction method2(text){\
 \n\t\treturn text;\
 \n\t}\
 \n\n\treturn {\
@@ -650,7 +650,7 @@ MODEL_CS = "$(NAME) = exports = module.exports = ->\
 \n\t\ttext"
 
 ifeq "$(APP)" ""
-TESTMODEL_JS = "describe('$(NAME)', function() {\
+TESTMODEL_JS = "describe('$(NAME)', function(){\
 \n\tvar $(NAME) = require('../../$(MODELS_DIRECTORY)/$(NAME_CAMELIZED)');"
 else
 TESTMODEL_JS = "describe('$(APP) > $(NAME)', function(){\
@@ -658,32 +658,32 @@ TESTMODEL_JS = "describe('$(APP) > $(NAME)', function(){\
 endif
 
 TESTMODEL_JS += "\n\tvar instance = new $(NAME)();\
-\n\n\tdescribe('\#counter', function() {\
-\n\t\tit('should not exist', function() {\
+\n\n\tdescribe('\#counter', function(){\
+\n\t\tit('should not exist', function(){\
 \n\t\t\tinstance.should.not.have.property('counter');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#index', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#index', function(){\
+\n\t\tit('should exist', function(){}\
 \n\t\t\tinstance.should.have.property('index');\
 \n\t\t});\
-\n\t\tit('should be 0', function() {\
+\n\t\tit('should be 0', function(){\
 \n\t\t\tinstance.index.should.eql(0);\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#method1()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#method1()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tinstance.should.have.property('method1');\
 \n\t\t});\
-\n\t\tit('should return a predefined text', function() {\
+\n\t\tit('should return a predefined text', function(){\
 \n\t\t\tinstance.method1().should.eql('\#method1()');\
 \n\t\t});\
 \n\t});\
-\n\n\tdescribe('\#method2()', function() {\
-\n\t\tit('should exist', function() {\
+\n\n\tdescribe('\#method2()', function(){\
+\n\t\tit('should exist', function(){\
 \n\t\t\tinstance.should.have.property('method2');\
 \n\t\t});\
-\n\t\tit('should return a given text', function() {\
+\n\t\tit('should return a given text', function(){\
 \n\t\t\tinstance.method2('text').should.eql('text');\
 \n\t\t});\
 \n\t});\
@@ -726,13 +726,13 @@ TESTMODEL_CS += "\n\tinstance = new $(NAME)()\
 
 SUBAPP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
-\n\napp.configure(function() {\
+\n\napp.configure(function(){\
 \n\t//app.set('views', __dirname + '/views');\
 \n\t//app.set('view engine', 'jade');\
 \n\tapp.use(express.router);\
 \n\t//app.use(express.static(__dirname + '/public'));\
 \n});\
-\n\napp.get('(/*)?', function(request, response) {\
+\n\napp.get('(/*)?', function(request, response){\
 \n\t// ... your code goes in here ...\
 \n});"
 
@@ -748,20 +748,20 @@ SUBAPP_CS = "express = require 'express'\
 \n\t\# ... your code goes in here ...\
 \n\treturn"
 
-TESTSUBAPP_JS = "describe('$(NAME)', function() {\
+TESTSUBAPP_JS = "describe('$(NAME)', function(){\
 \n\tvar $(NAME_CAMELIZED) = require('../../../$(APPS_DIRECTORY)/$(NAME_CAMELIZED)/app');\
 \n\tvar app = require('express').createServer();\
 \n\tvar http = require('http');\
 \n\n\tapp.use('/$(NAME_CAMELIZED)', $(NAME_CAMELIZED));\
 \n\n\tapp.listen(3000);\
-\n\n\tit('\'/$(NAME_CAMELIZED)\' route should exist', function() {\
+\n\n\tit('\'/$(NAME_CAMELIZED)\' route should exist', function(){\
 \n\t\tvar options = {\
 \n\t\t\thost: 'localhost',\
 \n\t\t\tport: 3000,\
 \n\t\t\tpath: '/$(NAME_CAMELIZED)',\
 \n\t\t\tmethod: 'GET'\
 \n\t\t};\
-\n\n\t\thttp.request(options, function(response) {\
+\n\n\t\thttp.request(options, function(response){\
 \n\t\t\tresponse.statusCode.should.eql(200);\
 \n\t\t});\
 \n\t});\
@@ -787,7 +787,7 @@ TESTSUBAPP_CS = "describe '$(NAME)', ->\
 
 APP_JS = "var express = require('express');\
 \n\nvar app = express.createServer();\
-\n\napp.configure(function() {\
+\n\napp.configure(function(){\
 \n\t//app.set('views', __dirname + '/views');\
 \n\t//app.set('view engine', 'jade');\
 \n\tapp.use(express.logger());\
@@ -796,13 +796,13 @@ APP_JS = "var express = require('express');\
 \n\tapp.use(express.router);\
 \n\t//app.use(express.static(__dirname + '/public'));\
 \n});\
-\n\napp.configure('development', function() {\
+\n\napp.configure('development', function(){\
 \n\tapp.use(express.errorHandler({\
 \n\t\tdumpExceptions: true,\
 \n\t\tshowStack: true\
 \n\t}));\
 \n});\
-\n\napp.configure('production', function() {\
+\n\napp.configure('production', function(){\
 \n\tapp.use(express.errorHandler());\
 \n});\
 \n\napp.listen(3000);"
