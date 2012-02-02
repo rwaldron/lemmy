@@ -680,7 +680,7 @@ TESTMODEL_JS += "\n\tvar instance = new $(NAME)();\
 \n\t\t});\
 \n\t});\
 \n\n\tdescribe('\#method2()', function() {\
-\n\t\tit('should exist', function() {\function\
+\n\t\tit('should exist', function() {\
 \n\t\t\tinstance.should.have.property('method2');\
 \n\t\t});\
 \n\t\tit('should return a given text', function() {\
