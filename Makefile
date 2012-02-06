@@ -425,6 +425,7 @@ git-init:
 	@git init
 	@git add .
 	@git commit -m "Initial commit."
+	@git checkout -b development
 
 move-files-to-deployment:
 	@mkdir $(DEPLOYMENT_DIRECTORY)
