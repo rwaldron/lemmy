@@ -1,4 +1,5 @@
-## LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha boilerplate
+# LEMMY. 
+## 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha+HTML5 boilerplate that kicks your ass.
 
 No better yet humble hommage to the Godfather of Heavy Metal, __[Lemmy Kilmister][0]__. 
 Perhaps you may have heard of him as the trust-worthy roadie of *[Jimi
@@ -78,7 +79,10 @@ The commands __Lemmy__ provides you are:
 This is the list of all the features are required or would be awesome to
 implement on __Lemmy__ in the near future, in random order:
 
-* Implement the *view* generation command.
+* Implement the *view* and *partial* commands.
+* Integrate [Twitter's Bootstrap][22] as a Layout.
+* Integrate [jQuery Mobile][23] as a layout.
+* Universal support.
 
 ### Contributors
 
@@ -100,7 +104,7 @@ some of the greatest and useful tools ever created for developers:
 * [Makefile][16] by Stuart Feldman
 * [Git][7] by Linus Torvalds
 * [Node.js][8] by [Ryan Dahl][17]
-* [Express][4], [Mocha][13], [EJS][14] by [TJ Holowaychuk][18]
+* [Express][4], [Mocha][13], and [EJS][14] by [TJ Holowaychuk][18]
 * [Coffee-Script][5] by [Josh Askhenas][19]
 * [Jitter][12] by [Trevor Burham][20]
 * [HTML5 boilerplate][10] by [Paul Irish][21]
@@ -150,3 +154,5 @@ OTHER DEALINGS IN THE SOFTWARE.
 [19]: https://github.com/jashkenas
 [20]: http://trevorburnham.com
 [21]: http://paulirish.com
+[22]: http://twitter.github.com/bootstrap
+[23]: http://jquerymobile.com
