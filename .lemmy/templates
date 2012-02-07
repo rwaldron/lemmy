@@ -8,9 +8,9 @@ NAME_CAMELIZED  = $(shell echo $(CAMELIZE_NAME))
 NAME_FUNCTIONALIZED = $(FIRST_CHARACTER)$(REST_OF_CHARACTERS)
 
 HELPMENU = "\
-\n---------------------------------------------------------------------------------\
-\n| LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha Boilerplate. |\
-\n---------------------------------------------------------------------------------\
+\n---------------------------------------------------------------------------------------\
+\n| LEMMY: 49% Motherfucker | 51% Son of a Bitch JS/CS Express+Mocha+HTML5 Boilerplate. |\
+\n---------------------------------------------------------------------------------------\
 \n\nList of Commands you're able to use:\
 \n\n-> setup [APP_LANGUAGE=CS]\t\tKick-start your JS/CS Express project for once and for all (JS is default).\
 \n-> clean\t\t\t\tClean-up all the generated code from your Express project.\
