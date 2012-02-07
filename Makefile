@@ -8,6 +8,9 @@ include .lemmy/licenses
 help:
 	@echo $(HELPMENU)
 
+version:
+	@echo "0.4.2"
+
 ifeq "$(APP_LANGUAGE)" "CS"
 clean:
 	@rm -f *.log
@@ -414,10 +417,7 @@ prepare:
 	@make move-files-to-deployment
 endif
 
-version:
-	@echo "0.4.1"
-
-.PHONY: help clean create update mit-license dependencies layout app module middleware route controller model build watch run test prepare version
+.PHONY: help version clean create update mit-license dependencies layout app module middleware route controller model build watch run test prepare
 
 # Helpers
 
