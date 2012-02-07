@@ -59,7 +59,7 @@ The commands __Lemmy__ provides you are:
 * *update* : Update all the Lemmy files on your project.
 * *dependencies* : Install locally all the dependencies defined on the package JSON file.
 * *app* : Generate a new Application file and its respective Test file into your project.
-* *layout* : tGenerate the layout and respective assets into your project or apps within the project.
+* *layout* : Generate the layout and respective assets into your project or apps within the project.
 * *module* : Generate a new Module file and its respective Test file into your project.
 * *middleware* : Generate a new Middleware file and its respective Test file into your project.
 * *route* : Generate a new Route Container file and its respective Test file into your project.
